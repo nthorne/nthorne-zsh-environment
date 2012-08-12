@@ -1,3 +1,9 @@
+### .zshrc
+###   - contains common zsh configuration
+###
+
+source ~/.zsh/common.zsh
+
 autoload -U compinit
 compinit
 
