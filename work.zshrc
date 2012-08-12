@@ -3,15 +3,15 @@
 source ~/.zsh/common.zsh
 
 
-if [[ ! -f ~/current_project.zsh ]]
+if [[ ! -f ~/.zsh/current_project.zsh ]]
 then
   export RPROMPT="$RPROMPT ${RED}[NO PROJECT]${NORM}"
 else
-  source ~/current_project.zsh
+  source ~/.zsh/current_project.zsh
 
   if [[ -z $CURRENT_PROJECT ]]
   then
-    return `error '$CURRENT_PROJECT not set in ~/current_project.zsh'`
+    return `error '$CURRENT_PROJECT not set in ~/.zsh/current_project.zsh'`
   fi
 
   export RPROMPT="$RPROMPT ${GREEN}[$CURRENT_PROJECT]${NORM}"
