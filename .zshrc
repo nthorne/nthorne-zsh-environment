@@ -59,3 +59,12 @@ export LS_COLORS
 #export PS1="${BLUE}[%n@%m]${RED} %~${NORM} "
 export RPROMPT="${%}[%?]%{%}"
 
+if [[ `hostname` =~ "slaptopen" ]]
+then
+  source $HOME/.zsh/home.zshrc
+elif [[ `hostname` =~ "gbguxs[0-9]+" ]]
+then
+  source $HOME/.zsh/work.zshrc
+else
+  return `error "unknown host"`
+fi
