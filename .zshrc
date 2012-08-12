@@ -17,19 +17,6 @@ function precmd()
 autoload -U colors
 colors
 
-function mkscript()
-{
-  local readonly INTERPRETER=${2:-/bin/bash -}
-
-  if [[ -z $1 ]]
-  then
-    echo "error: no script named"
-    return 1
-  fi
-
-  echo "#!$INTERPRETER" > $1 ; chmod u+x $1
-}
-
 ######## Custom aliases
 alias ls='ls -AF --color=auto'
 alias grep='grep --color=auto'
