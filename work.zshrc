@@ -179,6 +179,27 @@ function can_ci()
   lintit "$1"
 }
 
+
+# function construct_project_quickcd_aliases() {{{
+#   construct nifty path aliases based on the CURRENT_PROJECT_ROOT variable
+function construct_prohect_quickcdh_aliases()
+{
+  local source_folder
+  local project_root
+
+  for source_folder in $(find $CURRENT_PROJECT_ROOT -type d -name source)
+  do
+    project_root=${source_folder%%'/Implementation/source'}
+    project_name=$(basename $project_root)
+    alias $project_name="cd $project_root"
+  done
+}
+# }}}
+
+
+
+construct_project_quickcd_aliases
+
 alias sambaconnect="smbclient '\\\\stosamba01\\nthorne' -U nthorne"
 
 alias gm="nice -n 10 gmake NO_OPTIMIZATION=YesPlease"
@@ -204,8 +225,6 @@ alias lc="ls -l /opt/interflo/Users/nthorne/cores"
 alias rc="rm -rf /opt/interflo/Users/nthorne/cores/*"
 alias tlog="tail -f /opt/interflo/Users/nthorne/log/fsp_simA.10350.log"
 
-alias RBA="cd ~/RBA_LKAB/Implementation/source"
-alias CBR3="cd ~/CBR3/Implementation/source"
 
 alias todos="find . -name '*.?pp' ! -name '*Test*' ! -name '*tub.*' -exec egrep -i 'todo|fixme|xxx' {} +"
 alias todofiles="find . -name '*.?pp' ! -name '*Test*' ! -name '*tub.*' -exec egrep -li 'todo|fixme|xxx' {} +"
