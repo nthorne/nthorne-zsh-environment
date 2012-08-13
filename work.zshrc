@@ -19,6 +19,11 @@ else
     return `error '$CURRENT_PROJECT_ROOT not set in ~/current_project.zsh'`
   fi
 
+  if [[ ! -d $CURRENT_PROJECT_ROOT ]]
+  then
+    return `error "$CURRENT_PROJECT_ROOT does not exist or is not a directory"`
+  fi
+
   export RPROMPT="$RPROMPT ${GREEN}[$CURRENT_PROJECT]${NORM}"
 fi
 
