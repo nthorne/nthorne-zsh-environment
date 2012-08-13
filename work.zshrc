@@ -180,9 +180,9 @@ function can_ci()
 }
 
 
-# function construct_project_quickcd_aliases() {{{
+# function construct_subproject_quickcd_aliases() {{{
 #   construct nifty path aliases based on the CURRENT_PROJECT_ROOT variable
-function construct_prohect_quickcdh_aliases()
+function construct_subproject_quickcd_aliases()
 {
   local source_folder
   local project_root
@@ -198,7 +198,7 @@ function construct_prohect_quickcdh_aliases()
 
 
 
-construct_project_quickcd_aliases
+construct_subproject_quickcd_aliases
 
 alias sambaconnect="smbclient '\\\\stosamba01\\nthorne' -U nthorne"
 
