@@ -211,14 +211,18 @@ alias gt="nice -n 10 gmake NO_OPTIMIZATION=YesPlease test cov"
 alias gjt="nice -n 10 gmake -s -k -j9 test cov"
 alias gjs="nice -n 10 gmake -k -j 9 NO_OPTIMIZATION=YesPlease stub_targets"
 
-alias cleantcc='(cd ~/TCC_LKAB_SW/Implementation; ./makesys clean-all)'
-alias mktcc='(cd ~/TCC_LKAB_SW/Implementation ; ./makesys NO_OPTIMIZATION=YesPlease)'
+alias cleantcc="(cd $CURRENT_PROJECT_ROOT/Implementation; ./makesys clean-all)"
+alias mktcc="(cd $CURRENT_PROJECT_ROOT/Implementation;\
+  ./makesys NO_OPTIMIZATION=YesPlease)"
 
-alias mkfsp='(cd ~/TCC_LKAB_SW/Distribution/SunOS_i86pc/bin ; rm fsp* ; cd ../../../Implementation ; gmake NO_OPTIMIZATION=YesPlease)'
+alias mkfsp="(cd $CURRENT_PROJECT_ROOT/Distribution/SunOS_i86pc/bin;\
+  rm fsp* ; cd ../../../Implementation ; gmake NO_OPTIMIZATION=YesPlease)"
 
-alias mkstubs='(cd ~/TCC_LKAB_SW/Implementation ; ./makesys NO_OPTIMIZATION=YesPlease stub_targets)'
+alias mkstubs="(cd $CURRENT_PROJECT_ROOT/Implementation;\
+  ./makesys NO_OPTIMIZATION=YesPlease stub_targets)"
 
-alias cleartcc="pushd /opt/interflo/Users/nthorne/bin ; ../scripts/clearNVM 10350 ; prepareEventlog.sh 10350 ; popd"
+alias cleartcc="pushd /opt/interflo/Users/nthorne/bin;\
+  ../scripts/clearNVM 10350 ; prepareEventlog.sh 10350 ; popd"
 
 alias vfl="view /opt/interflo/Users/nthorne/log/fsp_simA.10350.log"
 alias lc="ls -l /opt/interflo/Users/nthorne/cores"
@@ -226,8 +230,10 @@ alias rc="rm -rf /opt/interflo/Users/nthorne/cores/*"
 alias tlog="tail -f /opt/interflo/Users/nthorne/log/fsp_simA.10350.log"
 
 
-alias todos="find . -name '*.?pp' ! -name '*Test*' ! -name '*tub.*' -exec egrep -i 'todo|fixme|xxx' {} +"
-alias todofiles="find . -name '*.?pp' ! -name '*Test*' ! -name '*tub.*' -exec egrep -li 'todo|fixme|xxx' {} +"
+alias todos="find . -name '*.?pp' ! -name '*Test*' ! -name '*tub.*'\
+  -exec egrep -i 'todo|fixme|xxx' {} +"
+alias todofiles="find . -name '*.?pp' ! -name '*Test*' ! -name '*tub.*'\
+  -exec egrep -li 'todo|fixme|xxx' {} +"
 
 alias message_grep="grep -e 'StpHandler[^N]\{1,\}NID_MESSAGE: [0-9]\{1,\}'"
 alias position_grep="grep -e 'Safe \(front\|rear\) position.*$'"
@@ -235,7 +241,4 @@ alias position_grep="grep -e 'Safe \(front\|rear\) position.*$'"
 alias ss="batch_nontest fgrep"
 
 alias go="ssh interflo@gbglemmel 'cd Users/nthorne/current; ./go'"
-
-alias dsw="(cd $HOME; rm TCC_LKAB_SW; ln -s TCC_LKAB_SW-nthorne/TCC_LKAB_SW .)"
-alias msw="(cd $HOME; rm TCC_LKAB_SW; ln -s TCC_LKAB_SW-nthorne_maintenance/TCC_LKAB_SW .)"
 
