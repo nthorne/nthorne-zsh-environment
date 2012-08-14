@@ -4,7 +4,7 @@
 
 # vim: set filetype=zsh :
 
-source ~/.zsh/common.zsh
+source ~/.zsh/lib/common.zsh
 
 
 ### }}}

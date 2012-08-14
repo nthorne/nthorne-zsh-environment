@@ -7,7 +7,7 @@
 ###
 
 # source the common functions
-source ~/.zsh/common.zsh
+source ~/.zsh/lib/common.zsh
 
 # initialize the completion system
 autoload -U compinit
