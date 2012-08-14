@@ -158,20 +158,28 @@ function batch_nontest()
 #   1 upon missing script name
 function mkscript()
 {
-  local readonly INTERPRETER=${2:-/bin/bash -}
+  local INTERPRETER=${2:-bash -}
+  local readonly BASH_TEMPLATE=/home/nthorne/Tools/Scripts/template_bash
 
   if [[ -z $1 ]]
   then
     return `error "no script named"`
   fi
 
+  # if no interpreter is named, and a Bash template file exists, use it.
+  # otherwise, expand INTERPRETER to the full path of the interpreter.
   if [[ -z $2 ]]
   then
-    cp /home/nthorne/Tools/Scripts/template_bash $1 && chmod u+wx $1
+    if [[ -f $BASH_TEMPLATE ]]
+    then
+      cp $BASH_TEMPLATE $1 && chmod u+wx $1
+      return
+    fi
   else
     INTERPRETER=$(command -v $INTERPRETER)
-    echo "#!$INTERPRETER" > $1 ; chmod u+x $1
   fi
+
+  echo "#!$INTERPRETER" > $1 ; chmod u+x $1
 }
 # }}}
 
