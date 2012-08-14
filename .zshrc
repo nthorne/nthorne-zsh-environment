@@ -88,10 +88,10 @@ function precmd()
 # determine which profile to source based upon hostname
 if [[ `hostname` =~ "slaptopen" ]]
 then
-  source $HOME/.zsh/home.zshrc
+  source ~/.zsh/profiles/home.zshrc
 elif [[ `hostname` =~ "gbguxs[0-9]+" ]]
 then
-  source $HOME/.zsh/work.zshrc
+  source ~/.zsh/profiles/work.zshrc
 else
   return `error "unknown host"`
 fi
