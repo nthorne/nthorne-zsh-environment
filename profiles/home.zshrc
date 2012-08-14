@@ -18,11 +18,16 @@ source ~/.zsh/lib/common.zsh
 function mkscript()
 {
   # INTERPRETER defaults to bash, if no argument is given
-  local readonly INTERPRETER=${2:-/bin/bash -}
+  local INTERPRETER=${2:-/bin/bash -}
 
   if [[ -z $1 ]]
   then
     return `error "no script named"`
+  fi
+
+  if [[ ! -z $2 ]]
+  then
+    INTERPRETER=$(command -v $INTERPRETER)
   fi
 
   echo "#!$INTERPRETER" > $1 ; chmod u+x $1
