@@ -4,60 +4,11 @@
 
 # vim: set filetype=zsh :
 
+### }}}
+### sourced modules {{{
+###
+
 source ~/.zsh/lib/common.zsh
-
-
-### }}}
-### aliases {{{
-###
-
-alias sambaconnect="smbclient '\\\\stosamba01\\nthorne' -U nthorne"
-
-alias gm="nice -n 10 gmake NO_OPTIMIZATION=YesPlease"
-alias gj="nice -n 10 gmake NO_OPTIMIZATION=YesPlease -j 30 -l 20"
-alias gjo="nice -n 10 gmake NO_OPTIMIZATION=YesPlease -s -k -j9 SIL4_TARGET=OBJECTS"
-alias gjc="nice -n 10 gmake -s -k -j clean"
-alias gjca="nice -n 10 gmake -s -k -j clean-all"
-alias gt="nice -n 10 gmake NO_OPTIMIZATION=YesPlease test cov"
-alias gjt="nice -n 10 gmake -s -k -j9 test cov"
-alias gjs="nice -n 10 gmake -k -j 9 NO_OPTIMIZATION=YesPlease stub_targets"
-
-alias cleantcc="(cd $CURRENT_PROJECT_ROOT/Implementation; ./makesys clean-all)"
-alias mktcc="(cd $CURRENT_PROJECT_ROOT/Implementation;\
-  ./makesys NO_OPTIMIZATION=YesPlease)"
-
-alias mkfsp="(cd $CURRENT_PROJECT_ROOT/Distribution/SunOS_i86pc/bin;\
-  rm fsp* ; cd ../../../Implementation ; gmake NO_OPTIMIZATION=YesPlease)"
-
-alias mkstubs="(cd $CURRENT_PROJECT_ROOT/Implementation;\
-  ./makesys NO_OPTIMIZATION=YesPlease stub_targets)"
-
-alias cleartcc="pushd /opt/interflo/Users/nthorne/bin;\
-  ../scripts/clearNVM 10350 ; prepareEventlog.sh 10350 ; popd"
-
-alias vfl="view /opt/interflo/Users/nthorne/log/fsp_simA.10350.log"
-alias lc="ls -l /opt/interflo/Users/nthorne/cores"
-alias rc="rm -rf /opt/interflo/Users/nthorne/cores/*"
-alias tlog="tail -f /opt/interflo/Users/nthorne/log/fsp_simA.10350.log"
-
-
-alias todos="find . -name '*.?pp' ! -name '*Test*' ! -name '*tub.*'\
-  -exec egrep -i 'todo|fixme|xxx' {} +"
-alias todofiles="find . -name '*.?pp' ! -name '*Test*' ! -name '*tub.*'\
-  -exec egrep -li 'todo|fixme|xxx' {} +"
-
-alias message_grep="grep -e 'StpHandler[^N]\{1,\}NID_MESSAGE: [0-9]\{1,\}'"
-alias position_grep="grep -e 'Safe \(front\|rear\) position.*$'"
-
-alias ss="batch_nontest fgrep"
-
-alias go="ssh interflo@gbglemmel 'cd Users/nthorne/current; ./go'"
-
-
-### }}}
-### functions {{{
-###
-
 
 # function read_current_project() {{{
 #   read the configuration file that details current project,
@@ -89,6 +40,65 @@ function read_current_project()
   fi
 }
 # }}}
+
+read_current_project
+
+### }}}
+### aliases {{{
+###
+
+alias sambaconnect="smbclient '\\\\stosamba01\\nthorne' -U nthorne"
+
+alias gm="nice -n 10 gmake NO_OPTIMIZATION=YesPlease"
+alias gj="nice -n 10 gmake NO_OPTIMIZATION=YesPlease -j 30 -l 20"
+alias gjo="nice -n 10 gmake NO_OPTIMIZATION=YesPlease -s -k -j9 SIL4_TARGET=OBJECTS"
+alias gjc="nice -n 10 gmake -s -k -j clean"
+alias gjca="nice -n 10 gmake -s -k -j clean-all"
+alias gt="nice -n 10 gmake NO_OPTIMIZATION=YesPlease test cov"
+alias gjt="nice -n 10 gmake -s -k -j9 test cov"
+alias gjs="nice -n 10 gmake -k -j 9 NO_OPTIMIZATION=YesPlease stub_targets"
+
+echo $CURRENT_PROJECT_ROOT
+if [[ ! -z $CURRENT_PROJECT_ROOT ]]
+then
+  alias cleantcc="(cd $CURRENT_PROJECT_ROOT/Implementation; ./makesys clean-all)"
+  alias mktcc="(cd $CURRENT_PROJECT_ROOT/Implementation;\
+    ./makesys NO_OPTIMIZATION=YesPlease)"
+
+  alias mkfsp="(cd $CURRENT_PROJECT_ROOT/Distribution/SunOS_i86pc/bin;\
+    rm fsp* ; cd ../../../Implementation ; gmake NO_OPTIMIZATION=YesPlease)"
+
+  alias mkstubs="(cd $CURRENT_PROJECT_ROOT/Implementation;\
+    ./makesys NO_OPTIMIZATION=YesPlease stub_targets)"
+fi
+
+alias cleartcc="pushd /opt/interflo/Users/nthorne/bin;\
+  ../scripts/clearNVM 10350 ; prepareEventlog.sh 10350 ; popd"
+
+alias vfl="view /opt/interflo/Users/nthorne/log/fsp_simA.10350.log"
+alias lc="ls -l /opt/interflo/Users/nthorne/cores"
+alias rc="rm -rf /opt/interflo/Users/nthorne/cores/*"
+alias tlog="tail -f /opt/interflo/Users/nthorne/log/fsp_simA.10350.log"
+
+
+alias todos="find . -name '*.?pp' ! -name '*Test*' ! -name '*tub.*'\
+  -exec egrep -i 'todo|fixme|xxx' {} +"
+alias todofiles="find . -name '*.?pp' ! -name '*Test*' ! -name '*tub.*'\
+  -exec egrep -li 'todo|fixme|xxx' {} +"
+
+alias message_grep="grep -e 'StpHandler[^N]\{1,\}NID_MESSAGE: [0-9]\{1,\}'"
+alias position_grep="grep -e 'Safe \(front\|rear\) position.*$'"
+
+alias ss="batch_nontest fgrep"
+
+alias go="ssh interflo@gbglemmel 'cd Users/nthorne/current; ./go'"
+
+
+### }}}
+### functions {{{
+###
+
+
 
 # function runtest() {{{
 #   build and run a named units test
@@ -219,17 +229,19 @@ function construct_subproject_quickcd_aliases()
   local source_folder
   local project_root
 
-  for source_folder in $(find $CURRENT_PROJECT_ROOT -type d -name source)
-  do
-    project_root=${source_folder%%'/Implementation/source'}
-    project_name=$(basename $project_root)
-    alias $project_name="cd $project_root"
-  done
+  if [[ ! -z $CURRENT_PROJECT_ROOT ]]
+  then
+    for source_folder in $(find $CURRENT_PROJECT_ROOT -type d -name source)
+    do
+      project_root=${source_folder%%'/Implementation/source'}
+      project_name=$(basename $project_root)
+      alias $project_name="cd $project_root"
+    done
+  fi
 }
 # }}}
 
 
 ### }}}
 
-read_current_project
 construct_subproject_quickcd_aliases
