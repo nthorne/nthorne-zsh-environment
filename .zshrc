@@ -69,6 +69,10 @@ alias grep='grep --color=auto'
 alias vim="vim -X"
 alias view="vim -R"
 
+# global dot-aliases, allows for e.g. cd ...
+alias -g ...='../../'
+alias -g ....='../../../'
+alias -g .....='../../../../'
 
 ### }}}
 ### function definitions {{{
