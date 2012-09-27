@@ -83,9 +83,48 @@ alias -g .....='../../../../'
 function precmd()
 {
   export PS1="${BLUE}[%n@%m${GREEN}$(__git_ps1 ' branch:%s')${BLUE}]${RED} %~${NORM} "
+
+  # if the virtualenv environment variable is set, and the RPROMPT does not
+  # contain the env token, add the token to the RPROMPT
+  if [[ ! -z $VIRTUAL_ENV ]]
+  then
+    local readonly ENV_HEAD=$(basename $VIRTUAL_ENV)
+    local readonly ENV_TOKEN="virtualenv:"
+
+    if [[ ! $RPROMPT == *$ENV_TOKEN* ]]
+    then
+      # if the RPROMPT did not contain the virtualenv token, simply add it..
+      export RPROMPT="$RPROMPT ${BLUE}[${GREEN}$ENV_TOKEN$ENV_HEAD${BLUE}]${NORM}"
+    elif [[ ! $RPROMPT == *$ENV_TOKEN$ACTIVE_VIRTUALENV* ]]
+    then
+      # .. or if it did contain the token, but not with another VIRTUAL_ENV
+      # string, replace the tag with an updated one
+      export RPROMPT="${RPROMPT/$ENV_TOKEN*]/$ENV_TOKEN$ENV_HEAD]}"
+    fi
+  fi
 }
 # }}}
 
+# function useenv() {{{
+#   activate the selected virtualenv
+#
+# arguments:
+#   $1 - the name of the virtualenv
+function useenv()
+{
+  # make sure that the project subdir, and the activate script exitst
+  test -d $1 || return
+  test -f bin/activate
+
+  # source the virtualenv activation script
+  . bin/activate
+
+  cd $1
+
+  # exporting this variable causes its value to be appended to RPROMPT
+  export ACTIVE_VIRTUALENV=$1
+}
+# }}}
 
 ### }}}
 
