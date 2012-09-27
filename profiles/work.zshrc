@@ -31,6 +31,11 @@ function read_current_project()
       return `error '$CURRENT_PROJECT_ROOT not set in ~/current_project.zsh'`
     fi
 
+    if [[ -z $CURRENT_PROJECT_INSTALL_PATH ]]
+    then
+      return `error '$CURRENT_PROJECT_INSTALL_PATH not set in ~/current_project.zsh'`
+    fi
+
     if [[ ! -d $CURRENT_PROJECT_ROOT ]]
     then
       return `error "$CURRENT_PROJECT_ROOT does not exist or is not a directory"`
@@ -58,28 +63,29 @@ alias gt="nice -n 10 gmake NO_OPTIMIZATION=YesPlease test cov"
 alias gjt="nice -n 10 gmake -s -k -j9 test cov"
 alias gjs="nice -n 10 gmake -k -j 9 NO_OPTIMIZATION=YesPlease stub_targets"
 
-echo $CURRENT_PROJECT_ROOT
-if [[ ! -z $CURRENT_PROJECT_ROOT ]]
+alias cleantcc="(cd $CURRENT_PROJECT_ROOT/Implementation; ./makesys clean-all)"
+alias mktcc="(cd $CURRENT_PROJECT_ROOT/Implementation;\
+  ./makesys NO_OPTIMIZATION=YesPlease)"
+
+alias mkfsp="(cd $CURRENT_PROJECT_ROOT/Distribution/SunOS_i86pc/bin;\
+  rm fsp* ; cd ../../../Implementation ; gmake NO_OPTIMIZATION=YesPlease)"
+
+alias mkstubs="(cd $CURRENT_PROJECT_ROOT/Implementation;\
+  ./makesys NO_OPTIMIZATION=YesPlease stub_targets)"
+
+if [[ -d $CURRENT_PROJECT_INSTALL_PATH ]]
 then
-  alias cleantcc="(cd $CURRENT_PROJECT_ROOT/Implementation; ./makesys clean-all)"
-  alias mktcc="(cd $CURRENT_PROJECT_ROOT/Implementation;\
-    ./makesys NO_OPTIMIZATION=YesPlease)"
+  alias cleartcc="pushd $CURRENT_PROJECT_INSTALL_PATH/bin;\
+    ../scripts/clearNVM 10350 ; prepareEventlog.sh 10350 ; popd"
 
-  alias mkfsp="(cd $CURRENT_PROJECT_ROOT/Distribution/SunOS_i86pc/bin;\
-    rm fsp* ; cd ../../../Implementation ; gmake NO_OPTIMIZATION=YesPlease)"
-
-  alias mkstubs="(cd $CURRENT_PROJECT_ROOT/Implementation;\
-    ./makesys NO_OPTIMIZATION=YesPlease stub_targets)"
+  alias vfl="view $CURRENT_PROJECT_INSTALL_PATH/log/fsp_simA.10350.log"
+  alias lc="ls -l $CURRENT_PROJECT_INSTALL_PATH/cores"
+  alias rc="rm -rf $CURRENT_PROJECT_INSTALL_PATH/cores/*"
+  alias tlog="tail -f $CURRENT_PROJECT_INSTALL_PATH/log/fsp_simA.10350.log"
+elif [[ ! -z $CURRENT_PROJECT_INSTALL_USER ]]
+then
+  alias go="ssh $CURRENT_PROJECT_INSTALL_USER 'cd $CURRENT_PROJECT_INSTALL_PATH; ./go'"
 fi
-
-alias cleartcc="pushd /opt/interflo/Users/nthorne/bin;\
-  ../scripts/clearNVM 10350 ; prepareEventlog.sh 10350 ; popd"
-
-alias vfl="view /opt/interflo/Users/nthorne/log/fsp_simA.10350.log"
-alias lc="ls -l /opt/interflo/Users/nthorne/cores"
-alias rc="rm -rf /opt/interflo/Users/nthorne/cores/*"
-alias tlog="tail -f /opt/interflo/Users/nthorne/log/fsp_simA.10350.log"
-
 
 alias todos="find . -name '*.?pp' ! -name '*Test*' ! -name '*tub.*'\
   -exec egrep -i 'todo|fixme|xxx' {} +"
@@ -91,7 +97,6 @@ alias position_grep="grep -e 'Safe \(front\|rear\) position.*$'"
 
 alias ss="batch_nontest fgrep"
 
-alias go="ssh interflo@gbglemmel 'cd Users/nthorne/current; ./go'"
 
 
 ### }}}
