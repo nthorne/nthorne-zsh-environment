@@ -88,8 +88,8 @@ function precmd()
   # contain the env token, add the token to the RPROMPT
   if [[ ! -z $VIRTUAL_ENV ]]
   then
-    local readonly ENV_HEAD=$(basename $VIRTUAL_ENV)
-    local readonly ENV_TOKEN="virtualenv:"
+    local ENV_HEAD=$(basename $VIRTUAL_ENV)
+    local ENV_TOKEN="virtualenv:"
 
     if [[ ! $RPROMPT == *$ENV_TOKEN* ]]
     then
