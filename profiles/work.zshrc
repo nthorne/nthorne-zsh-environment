@@ -17,7 +17,7 @@ function read_current_project()
 {
   if [[ ! -f ~/current_project.zsh ]]
   then
-    export RPROMPT="$RPROMPT ${RED}[NO PROJECT]${NORM}"
+    export RPROMPT="$RPROMPT ${BLUE}[${RED}NO PROJECT${BLUE}]${NORM}"
   else
     source ~/current_project.zsh
 
@@ -36,7 +36,7 @@ function read_current_project()
       return `error "$CURRENT_PROJECT_ROOT does not exist or is not a directory"`
     fi
 
-    export RPROMPT="$RPROMPT ${GREEN}[$CURRENT_PROJECT]${NORM}"
+    export RPROMPT="$RPROMPT ${BLUE}[${GREEN}project:$CURRENT_PROJECT${BLUE}]${NORM}"
   fi
 }
 # }}}
