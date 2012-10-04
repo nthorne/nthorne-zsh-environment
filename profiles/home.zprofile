@@ -4,4 +4,4 @@
 
 # vim: set filetype=zsh :
 
-export PATH=$PATH:/opt/crosstools-ng/bin
+export PATH=$PATH:/opt/crosstool-ng/bin
