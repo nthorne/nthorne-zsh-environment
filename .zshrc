@@ -131,10 +131,10 @@ function useenv()
 # determine which profile to source based upon hostname
 if [[ `hostname` =~ "slaptopen" ]]
 then
-  source ~/.zsh/profiles/home.zshrc
+  test -f ~/.zsh/profiles/home.zshrc && source ~/.zsh/profiles/home.zshrc
 elif [[ `hostname` =~ "gbguxs[0-9]+" ]]
 then
-  source ~/.zsh/profiles/work.zshrc
+  test -f ~/.zsh/profiles/work.zshrc && source ~/.zsh/profiles/work.zshrc
 else
   return `error "unknown host"`
 fi
