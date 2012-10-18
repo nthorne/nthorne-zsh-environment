@@ -113,7 +113,7 @@ function precmd()
 function useenv()
 {
   # make sure that the project subdir, and the activate script exitst
-  test -d $1 || return
+  test -d "$1" || return
   test -f bin/activate
 
   # source the virtualenv activation script
