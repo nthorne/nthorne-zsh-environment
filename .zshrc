@@ -44,7 +44,6 @@ export DISPLAY="`echo $SSH_CONNECTION | awk '{print $1}'`:0.0"
 export LSOPT="--color=auto"
 export LS_COLORS='ow=01;35:di=01;35'
 
-#export PS1="${BLUE}[%n@%m]${RED} %~${NORM} "
 export RPROMPT="${%}[%?]%{%}"
 
 ### }}}
@@ -125,6 +124,17 @@ function useenv()
   export ACTIVE_VIRTUALENV=$1
 }
 # }}}
+
+# function unuseenv() {{{
+#   deactivate the selected virtualenv
+function unuseenv()
+{
+  deactivate
+  unset ACTIVE_VIRTUALENV
+  export RPROMPT="${%}[%?]%{%}"
+}
+# }}}
+
 
 ### }}}
 
