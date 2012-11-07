@@ -4,4 +4,4 @@
 
 # vim: set filetype=zsh :
 
-export PATH=$PATH:/home/nthorne/bin
+export PATH=/home/nthorne/bin:$PATH
