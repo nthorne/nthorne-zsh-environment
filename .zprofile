@@ -16,10 +16,12 @@ export PAGER="/bin/less -s"
 ### }}}
 
 # determine which profile to source based upon hostname
-if [[ `hostname` =~ "slaptopen" ]]
+CURRENT_HOST=`hostname`
+CURRENT_HOST=${CURRENT_HOST%%[0-9]*}
+if [[ $CURRENT_HOST == "slaptopen" ]]
 then
   test -f ~/.zsh/profiles/home.zprofile && source ~/.zsh/profiles/home.zprofile
-elif [[ `hostname` =~ "gbguxs[0-9]+" ]]
+elif [[ $CURRENT_HOST == "gbguxs" ]]
 then
   test -f ~/.zsh/profiles/work.zprofile && source ~/.zsh/profiles/work.zprofile
 else

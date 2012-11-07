@@ -139,10 +139,14 @@ function unuseenv()
 ### }}}
 
 # determine which profile to source based upon hostname
-if [[ `hostname` =~ "slaptopen" ]]
+# NOTE: The dirty, ugly hack of removing trailing numericals, is in order to
+#  cope with the fact that at work, there is no zsh/regex module :(
+CURRENT_HOST=`hostname`
+CURRENT_HOST=${CURRENT_HOST%%[0-9]*}
+if [[ $CURRENT_HOST == "slaptopen" ]]
 then
   test -f ~/.zsh/profiles/home.zshrc && source ~/.zsh/profiles/home.zshrc
-elif [[ `hostname` =~ "gbguxs[0-9]+" ]]
+elif [[ $CURRENT_HOST == "gbguxs" ]]
 then
   test -f ~/.zsh/profiles/work.zshrc && source ~/.zsh/profiles/work.zshrc
 else
