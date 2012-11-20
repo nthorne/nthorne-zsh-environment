@@ -24,7 +24,7 @@ colors
 ### general settings {{{
 ###
 
-export PAGER="/bin/less -s"
+export PAGER="/bin/less -sR"
 export EDITOR="vim"
 
 # history settings
