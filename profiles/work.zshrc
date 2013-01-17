@@ -97,7 +97,7 @@ alias position_grep="grep -e 'Safe \(front\|rear\) position.*$'"
 
 alias ss="batch_nontest fgrep"
 alias find_pool_allocations="find . -name '*.?pp' ! -name '*Test.?pp' \
-  ! -name '*[Ss]tub.?pp' -exec egrep 'c(reate|lone)Obj' {} + | egrep -v '[Ss]tub'"
+  ! -name '*[Ss]tub.?pp' -exec egrep -l 'c(reate|lone)Obj' {} + | egrep -v '[Ss]tub'"
 
 
 
