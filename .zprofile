@@ -24,6 +24,9 @@ then
 elif [[ $CURRENT_HOST == "gbguxs" ]]
 then
   test -f ~/.zsh/profiles/work.zprofile && source ~/.zsh/profiles/work.zprofile
+elif [[ $CURRENT_HOST == "mintvm" ]]
+then
+  test -f ~/.zsh/profiles/workvm.zprofile && source ~/.zsh/profiles/workvm.zprofile
 else
   return `error "unknown host"`
 fi
