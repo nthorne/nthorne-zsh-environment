@@ -10,6 +10,9 @@ usage
     $ ln -s .zsh/.zshrc .
     $ ln -s .zsh/.zprofile .
 
+If needed, also perform the following
+    $ ln -s .zsh/.zshenv .
+
 notes
 -----
 
