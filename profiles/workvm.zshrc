@@ -64,7 +64,7 @@ read_current_project
 ###
 
 alias synctcc="rsync -ravz --exclude='.*.sw?' --exclude='hooks/' \
-  $CURRENT_PROJECT_ROOT $CURRENT_PROJECT_REMOTE_PATH"
+  $CURRENT_PROJECT_ROOT $CURRENT_PROJECT_REMOTE_USER:$CURRENT_PROJECT_REMOTE_PATH"
 alias cleantcc="synctcc; ssh $CURRENT_PROJECT_REMOTE_USER \"source /etc/profile; \
   cd $CURRENT_PROJECT_REMOTE_ROOT/Implementation; ./makesys clean-all\""
 alias mktcc="synctcc; ssh $CURRENT_PROJECT_REMOTE_USER \"source /etc/profile; \
