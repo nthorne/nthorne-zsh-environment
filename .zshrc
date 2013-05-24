@@ -83,6 +83,7 @@ alias view="vim -R"
 alias -g C='| wc -l'
 alias -g F='| fgrep'
 alias -g FI='| fgrep -i'
+alias -g FV='| fgrep -v'
 alias -g G='| egrep'
 alias -g H='| head'
 alias -g L='| less'
