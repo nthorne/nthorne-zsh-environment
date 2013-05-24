@@ -39,11 +39,15 @@ export EXINIT="set ai sm sw=2 sts=2 bs=2 showmode ruler guicursor=a:blinkon0"
 bindkey -v
 
 zle -N globalias
+zle -N rationalise-dot
 
 # keybindings for alias expansion
 bindkey " " globalias               # expand on space
 bindkey "^ " magic-space            # <C-space> to bypass expansion
 bindkey -M isearch " " magic-space  # use normal space during searches
+
+# keybinding for dot expansion
+bindkey . rationalise-dot
 
 # set the DISPLAY variable automatically, using the IP address from SSH_CONNECTION
 export DISPLAY="`echo $SSH_CONNECTION | awk '{print $1}'`:0.0"
@@ -75,11 +79,7 @@ alias grep='grep --color=auto'
 alias vim="vim -X"
 alias view="vim -R"
 
-# global dot-aliases, allows for e.g. cd ...
-alias -g ...='../../'
-alias -g ....='../../../'
-alias -g .....='../../../../'
-
+#global aliases
 alias -g C='| wc -l'
 alias -g F='| fgrep'
 alias -g FI='| fgrep -i'
@@ -161,6 +161,15 @@ function globalias () {
     zle expand-word
   fi
   zle self-insert
+}
+
+function rationalise-dot () {
+  if [[ $LBUFFER =~ ' \.\.$' ]]
+  then
+    LBUFFER+=/..
+  else
+    LBUFFER+=.
+  fi
 }
 # }}}
 
