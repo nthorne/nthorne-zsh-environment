@@ -80,6 +80,15 @@ alias -g ...='../../'
 alias -g ....='../../../'
 alias -g .....='../../../../'
 
+alias -g C='| wc -l'
+alias -g F='| fgrep'
+alias -g FI='| fgrep -i'
+alias -g G='| egrep'
+alias -g H='| head'
+alias -g L='| less'
+alias -g S='| sort'
+alias -g T='| tail'
+
 # suffix aliases
 alias -s md=vim
 
