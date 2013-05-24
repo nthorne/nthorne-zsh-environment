@@ -38,6 +38,13 @@ export EXINIT="set ai sm sw=2 sts=2 bs=2 showmode ruler guicursor=a:blinkon0"
 # use vi keybindings
 bindkey -v
 
+zle -N globalias
+
+# keybindings for alias expansion
+bindkey " " globalias               # expand on space
+bindkey "^ " magic-space            # <C-space> to bypass expansion
+bindkey -M isearch " " magic-space  # use normal space during searches
+
 # set the DISPLAY variable automatically, using the IP address from SSH_CONNECTION
 export DISPLAY="`echo $SSH_CONNECTION | awk '{print $1}'`:0.0"
 
@@ -135,6 +142,16 @@ function unuseenv()
   deactivate
   unset ACTIVE_VIRTUALENV
   export RPROMPT="${%}[%?]%{%}"
+}
+
+function globalias () {
+  # Expand upper-case global aliases
+  if [[ $LBUFFER =~ ' [A-Z0-9]+$' ]]
+  then
+    zle _expand_alias
+    zle expand-word
+  fi
+  zle self-insert
 }
 # }}}
 
