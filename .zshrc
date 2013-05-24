@@ -92,6 +92,8 @@ alias -g T='| tail'
 
 # suffix aliases
 alias -s md=vim
+alias -s cpp=vim
+alias -s hpp=vim
 
 ### }}}
 ### function definitions {{{
