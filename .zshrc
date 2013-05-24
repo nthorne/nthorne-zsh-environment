@@ -73,6 +73,9 @@ alias -g ...='../../'
 alias -g ....='../../../'
 alias -g .....='../../../../'
 
+# suffix aliases
+alias -s md=vim
+
 ### }}}
 ### function definitions {{{
 ###
