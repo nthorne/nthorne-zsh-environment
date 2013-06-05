@@ -167,7 +167,7 @@ function globalias () {
 }
 
 function rationalise-dot () {
-  if [[ $LBUFFER =~ ' \.\.$' ]]
+  if [[ $LBUFFER =~ '[ \/]\.\.$' ]]
   then
     LBUFFER+=/..
   else
