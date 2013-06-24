@@ -63,21 +63,7 @@ read_current_project
 ### aliases {{{
 ###
 
-alias cleantcc="synctcc; ssh $CURRENT_PROJECT_REMOTE_USER \"source /etc/profile; \
-  cd $CURRENT_PROJECT_REMOTE_ROOT/Implementation; ./makesys clean-all\""
-alias mktcc="synctcc; ssh $CURRENT_PROJECT_REMOTE_USER \"source /etc/profile; \
-  cd $CURRENT_PROJECT_REMOTE_ROOT/Implementation; \
-  ./makesys NO_OPTIMIZATION=YesPlease\""
-
-alias mkfsp="synctcc; ssh $CURRENT_PROJECT_REMOTE_USER \"source /etc/profile; \
-  cd $CURRENT_PROJECT_REMOTE_ROOT/Distribution/SunOS_i86pc/bin;\
-  rm fsp* ; cd ../../../Implementation ; gmake NO_OPTIMIZATION=YesPlease\""
-
-alias mkstubs="synctcc; ssh $CURRENT_PROJECT_REMOTE_USER \"source /etc/profile; \
-  cd $CURRENT_PROJECT_REMOTE_ROOT/Implementation;\
-  ./makesys NO_OPTIMIZATION=YesPlease stub_targets\""
-
-alias pushtcc="ssh $CURRENT_PROJECT_REMOTE_USER \"source /etc/profile; pushtcc\""
+alias mkstubs="buildtcc.sh stub_targets"
 
 alias ss="batch_nontest fgrep"
 
