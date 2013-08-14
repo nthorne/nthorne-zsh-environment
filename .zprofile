@@ -27,6 +27,10 @@ then
 elif [[ $CURRENT_HOST == "mintvm" ]]
 then
   test -f ~/.zsh/profiles/workvm.zprofile && source ~/.zsh/profiles/workvm.zprofile
+elif [[ $CURRENT_HOST =~ "SCANL" ]]
+then
+  # Running under Cygwin - no customizations yet
+  ;
 else
   return `error "unknown host"`
 fi
