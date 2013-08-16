@@ -67,6 +67,7 @@ alias mkstubs="buildtcc.sh stub_targets"
 
 alias ss="batch_nontest fgrep"
 
+alias p150="~/repos/scripts/if150_parse.py"
 
 
 ### }}}
