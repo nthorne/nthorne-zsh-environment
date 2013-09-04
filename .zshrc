@@ -89,6 +89,8 @@ alias -g H='| head'
 alias -g L='| less'
 alias -g S='| sort'
 alias -g T='| tail'
+alias -g EN="2>/dev/null"
+alias -g ON="1>/dev/null"
 
 # suffix aliases
 alias -s md=vim
