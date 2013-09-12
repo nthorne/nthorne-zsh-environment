@@ -6,6 +6,11 @@
 
 source ~/.zsh/lib/common.zsh
 
+# add todo.txt completion
+source ~/repos/todo.txt-cli/todo_completion
+
+alias t="todo.sh"
+
 
 # function mkscript() {{{
 #   helper function for creating script file

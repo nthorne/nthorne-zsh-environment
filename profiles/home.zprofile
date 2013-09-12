@@ -10,3 +10,6 @@ export PATH=$PATH:/opt/crosstool-ng/bin
 # For Android development
 export PATH=$PATH:/opt/android-sdk-linux/tools
 export PATH=$PATH:/opt/android-sdk-linux/platform-tools
+
+# For todo.txt
+export PATH=$PATH:/home/nthorne/repos/todo.txt-cli
