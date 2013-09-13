@@ -139,6 +139,71 @@ function construct_subproject_quickcd_aliases()
 }
 # }}}
 
+# function mkbranches() {{{
+#   create a matching set of git branches in both Core and Adaptation in
+#   $CURRENT_PROJECT_ROOT
+#
+# arguments:
+#   $1 - the name of the new branches
+function mkbranches()
+{
+  if [[ ! -z $CURRENT_PROJECT_ROOT && -d $CURRENT_PROJECT_ROOT && ! -z $1 ]]
+  then
+    pushd $CURRENT_PROJECT_ROOT > /dev/null
+    echo "*** Creating Adaptation branch ***"
+    git checkout -b $1
+    cd Implementation/TCC_SW
+    echo
+    echo "*** Creating Core branch ***"
+    git checkout -b $1
+    popd > /dev/null
+  fi
+}
+# }}}
+
+# function cobranches() {{{
+#   check out a matching pair of branches in both Core and Adaptation
+#
+# arguments:
+#   $1 - the name of the branch
+function cobranches()
+{
+  if [[ ! -z $CURRENT_PROJECT_ROOT && -d $CURRENT_PROJECT_ROOT && ! -z $1 ]]
+  then
+    pushd $CURRENT_PROJECT_ROOT > /dev/null
+    echo "*** Switching Adaptation branch ***"
+    git checkout $1
+    cd Implementation/TCC_SW
+    echo
+    echo "*** Switching Core branch ***"
+    git checkout $1
+    popd > /dev/null
+  fi
+}
+# }}}
+
+# function rmbranches() {{{
+#   delete a matching pair of branches in both Core and Adaptation
+#
+# arguments:
+#   $1 - the name of the branch
+function rmbranches()
+{
+  if [[ ! -z $CURRENT_PROJECT_ROOT && -d $CURRENT_PROJECT_ROOT && ! -z $1 ]]
+  then
+    pushd $CURRENT_PROJECT_ROOT > /dev/null
+    echo "*** Deleting Adaptation branch ***"
+    git branch -d $1
+    cd Implementation/TCC_SW
+    echo
+    echo "*** Deleting Core branch ***"
+    git branch -d $1
+    popd > /dev/null
+  fi
+}
+# }}}
+
+
 
 ### }}}
 
