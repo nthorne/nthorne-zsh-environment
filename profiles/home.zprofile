@@ -13,3 +13,6 @@ export PATH=$PATH:/opt/android-sdk-linux/platform-tools
 
 # For todo.txt
 export PATH=$PATH:/home/nthorne/src/todo.txt-cli
+
+# For go
+export PATH=$PATH:/home/nthorne/bin/go/bin
