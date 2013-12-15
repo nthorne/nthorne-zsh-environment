@@ -16,3 +16,4 @@ export PATH=$PATH:/home/nthorne/src/todo.txt-cli
 
 # For go
 export PATH=$PATH:/home/nthorne/bin/go/bin
+export GOPATH=/home/nthorne/src/go
