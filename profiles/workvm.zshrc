@@ -131,8 +131,8 @@ function construct_subproject_quickcd_aliases()
   then
     for source_folder in $(find $CURRENT_PROJECT_ROOT -type d -name source)
     do
-      project_root=${source_folder%%'/Implementation/source'}
-      project_name=$(basename $project_root)
+      project_root=$source_folder
+      project_name=$(basename ${project_root%%Implementation/source})
       alias $project_name="cd $project_root"
     done
   fi
