@@ -21,5 +21,12 @@ export GOPATH=/home/nthorne/src/go
 # For dart
 if [[ -d /home/nthorne/bin/dart ]]
 then
+  export PATH=$PATH:/home/nthorne/bin/dart/
   export PATH=$PATH:/home/nthorne/bin/dart/dart-sdk/bin
+fi
+
+# For appengine
+if [[ -d /home/nthorne/bin/go_appengine ]]
+then
+  export PATH=$PATH:/home/nthorne/bin/go_appengine
 fi
