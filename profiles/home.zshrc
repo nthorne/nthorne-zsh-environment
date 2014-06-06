@@ -9,7 +9,7 @@ source ~/.zsh/lib/common.zsh
 # add todo.txt completion
 test -d ~/repos/todo.txt-cli && source ~/repos/todo.txt-cli/todo_completion
 
-alias t="todo.sh"
+alias t="todo.sh -a"
 
 
 # function mkscript() {{{
