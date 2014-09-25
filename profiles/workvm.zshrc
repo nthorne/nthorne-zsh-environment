@@ -201,8 +201,19 @@ function rmbranches()
     popd > /dev/null
   fi
 }
-# }}}
 
+# function cob() {{{
+#   recursively check out a branch in each submodule, and merge the
+#   local branch with its corresponding origin branch.
+#
+# arguments:
+#   $1 - the name of the branch. Defaults to master.
+function cob()
+{
+  local readonly branch=${1:-master}
+  git submodule foreach "git checkout $branch; git merge --ff-only origin/$branch"
+}
+# }}}
 
 
 ### }}}
