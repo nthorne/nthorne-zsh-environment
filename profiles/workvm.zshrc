@@ -133,7 +133,7 @@ function construct_subproject_quickcd_aliases()
     do
       project_root=$source_folder
       project_name=$(basename ${project_root%%Implementation/source})
-      alias $project_name="cd $project_root"
+      alias $project_name="cd ${project_root%%Implementation/source}"
     done
   fi
 }
