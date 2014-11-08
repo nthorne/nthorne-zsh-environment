@@ -30,3 +30,9 @@ if [[ -d /home/nthorne/bin/go_appengine ]]
 then
   export PATH=$PATH:/home/nthorne/bin/go_appengine
 fi
+
+# For ADT
+if [[ -d /home/nthorne/bin/adt-bundle-linux-x86-20140702/eclipse ]]
+then
+  export PATH=$PATH:/home/nthorne/bin/adt-bundle-linux-x86-20140702/eclipse
+fi
