@@ -17,6 +17,7 @@ export PATH=$PATH:/home/nthorne/repos/todo.txt-cli
 # For go
 export PATH=$PATH:/home/nthorne/bin/go/bin
 export GOPATH=/home/nthorne/src/go
+export PATH=$PATH:$GOPATH/bin
 
 # For dart
 if [[ -d /home/nthorne/bin/dart ]]
