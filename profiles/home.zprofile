@@ -16,7 +16,7 @@ export PATH=$PATH:/home/nthorne/repos/todo.txt-cli
 
 # For go
 export PATH=$PATH:/home/nthorne/bin/go/bin
-export GOPATH=/home/nthorne/src/go
+export GOPATH=/home/nthorne/src/go:/home/nthorne/src/go/src/bitbucket.org/xyrosource
 export PATH=$PATH:$GOPATH/bin
 
 # For dart
