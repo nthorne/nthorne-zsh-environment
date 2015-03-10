@@ -19,12 +19,12 @@ function read_current_project()
 
     if [[ -z $CURRENT_PROJECT ]]
     then
-      return `error '$CURRENT_PROJECT not set in ~/current_project.zsh'`
+      return
     fi
 
     if [[ -z $CURRENT_PROJECT_ROOT ]]
     then
-      return `error '$CURRENT_PROJECT_ROOT not set in ~/current_project.zsh'`
+      return
     fi
 
     if [[ -z $CURRENT_PROJECT_INSTALL_PATH ]]
