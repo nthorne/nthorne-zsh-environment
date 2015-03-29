@@ -46,6 +46,8 @@ bindkey " " globalias               # expand on space
 bindkey "^ " magic-space            # <C-space> to bypass expansion
 bindkey -M isearch " " magic-space  # use normal space during searches
 
+bindkey '^r' history-incremental-search-backward
+
 # keybinding for dot expansion
 bindkey . rationalise-dot
 
