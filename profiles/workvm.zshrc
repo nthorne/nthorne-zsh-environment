@@ -220,6 +220,14 @@ function cob()
 }
 # }}}
 
+function tx () {
+  if [[ -n "$1" && -e "$1" ]]; then
+    mv "$1" /media/sf_Documents/transfer
+  else
+    echo "$1: no such file or directory."
+  fi
+}
+
 
 ### }}}
 
