@@ -27,6 +27,9 @@ colors
 export PAGER="/bin/less -sR"
 export EDITOR="vim"
 
+# Tell Java that XMonad is nonreparenting in order to avoid all-grey windows
+export _JAVA_AWT_WM_NONREPARENTING=1
+
 # history settings
 HISTFILE=~/.zshhistory
 HISTSIZE=3000
