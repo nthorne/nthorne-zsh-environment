@@ -188,7 +188,7 @@ function rationalise-dot () {
 #  cope with the fact that at work, there is no zsh/regex module :(
 CURRENT_HOST=`hostname`
 CURRENT_HOST=${CURRENT_HOST%%[0-9]*}
-if [[ $CURRENT_HOST == "slaptopen" || $CURRENT_HOST == "dev" ]]
+if [[ $CURRENT_HOST == "slaptopen" || $CURRENT_HOST == "dev" || $CURRENT_HOST == "asusen" ]]
 then
   test -f ~/.zsh/profiles/home.zshrc && source ~/.zsh/profiles/home.zshrc
 elif [[ $CURRENT_HOST == "gbguxs" ]]
