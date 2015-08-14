@@ -6,6 +6,8 @@
 ### modules {{{
 ###
 
+setopt KSH_ARRAYS
+
 # source the common functions
 source ~/.zsh/lib/common.zsh
 
