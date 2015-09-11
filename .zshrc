@@ -6,8 +6,6 @@
 ### modules {{{
 ###
 
-setopt KSH_ARRAYS
-
 # source the common functions
 source ~/.zsh/lib/common.zsh
 
@@ -209,3 +207,5 @@ then
 else
   return `error "unknown host"`
 fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

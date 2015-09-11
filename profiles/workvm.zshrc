@@ -15,7 +15,9 @@ function read_current_project()
   then
     export RPROMPT="$RPROMPT ${BLUE}[${RED}NO PROJECT${BLUE}]${NORM}"
   else
+    setopt KSH_ARRAYS
     source ~/current_project.zsh
+    unsetopt KSH_ARRAYS
 
     if [[ -z $CURRENT_PROJECT ]]
     then
@@ -138,7 +140,10 @@ function construct_subproject_quickcd_aliases()
     do
       project_root=$source_folder
       project_name=$(basename ${project_root%%Implementation/source})
-      alias $project_name="cd ${project_root%%Implementation/source}"
+      if [[ -n "$project_name" && "$project_name" != "source" ]]
+      then
+        alias $project_name="cd ${project_root%%Implementation/source}"
+      fi
     done
   fi
 }
