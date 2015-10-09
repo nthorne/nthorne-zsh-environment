@@ -76,12 +76,12 @@ alias mkstubs="(cd $CURRENT_PROJECT_ROOT/Implementation;\
 if [[ -d $CURRENT_PROJECT_INSTALL_PATH ]]
 then
   alias cleartcc="pushd $CURRENT_PROJECT_INSTALL_PATH/bin;\
-    ../scripts/clearNVM 10350 ; prepareEventlog.sh 10350 ; popd"
+    ../scripts/clearNVM 10300 ; prepareEventlog.sh 10300 ; popd"
 
-  alias vfl="view $CURRENT_PROJECT_INSTALL_PATH/log/fsp_simA.10350.log"
+  alias vfl="view $CURRENT_PROJECT_INSTALL_PATH/log/fsp_simA.10300.log"
   alias lc="ls -l $CURRENT_PROJECT_INSTALL_PATH/cores"
   alias rc="rm -rf $CURRENT_PROJECT_INSTALL_PATH/cores/*"
-  alias tlog="tail -f $CURRENT_PROJECT_INSTALL_PATH/log/fsp_simA.10350.log"
+  alias tlog="tail -f $CURRENT_PROJECT_INSTALL_PATH/log/fsp_simA.10300.log"
 elif [[ ! -z $CURRENT_PROJECT_INSTALL_USER ]]
 then
   alias go="ssh $CURRENT_PROJECT_INSTALL_USER 'cd $CURRENT_PROJECT_INSTALL_PATH; ./go'"
