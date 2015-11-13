@@ -200,7 +200,7 @@ then
 elif [[ $CURRENT_HOST == "mintvm" ]]
 then
   test -f ~/.zsh/profiles/workvm.zshrc && source ~/.zsh/profiles/workvm.zshrc
-elif [[ $CURRENT_HOST =~ "SCANL" ]]
+elif [[ $CURRENT_HOST =~ "BTIS" ]]
 then
   # Running under Cygwin - no customizations yet
   ;
