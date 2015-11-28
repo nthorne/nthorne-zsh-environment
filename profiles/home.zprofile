@@ -29,7 +29,8 @@ fi
 # For appengine
 if [[ -d /home/nthorne/bin/go_appengine ]]
 then
-  export PATH=$PATH:/home/nthorne/bin/go_appengine
+  export go_appengine=/home/nthorne/bin/go_appengine
+  export PATH=$PATH:$go_appengine
 fi
 
 # For ADT
