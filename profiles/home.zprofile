@@ -41,3 +41,7 @@ fi
 
 # For shellcheck
 export PATH=$PATH:/home/nthorne/.cabal/bin/
+
+# For scala
+export SCALA_HOME=/opt/scala
+export PATH=$PATH:$SCALA_HOME/bin/
