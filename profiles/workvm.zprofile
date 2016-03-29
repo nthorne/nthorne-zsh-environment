@@ -8,3 +8,6 @@ export http_proxy="http://webproxy.scan.bombardier.com:8080"
 export https_proxy="http://webproxy.scan.bombardier.com:8080"
 
 export PATH=/home/nthorne/bin:$PATH
+
+# For shellcheck
+export PATH=$PATH:/home/nthorne/.cabal/bin/
