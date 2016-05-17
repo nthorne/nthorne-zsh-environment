@@ -16,9 +16,6 @@ compinit
 # add git completion
 source ~/.zsh/completion/_git
 
-autoload -U colors
-colors
-
 
 ### }}}
 ### general settings {{{
