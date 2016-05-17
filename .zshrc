@@ -78,8 +78,8 @@ NORM="%{"$'\033[00m'"%}"
 
 alias ls='ls -AF --color=auto'
 alias grep='grep --color=auto'
-alias vim="vim -X"
-alias view="vim -R"
+alias vim="nvim"
+alias view="nvim -R"
 
 #global aliases
 alias -g C='| wc -l'

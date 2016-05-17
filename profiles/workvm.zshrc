@@ -75,11 +75,6 @@ alias ehu="cd export/home/Users/$USER"
 
 alias oi="cd opt/interflo"
 
-# This alias allows for using the X11 clipboard; for some strange reason,
-# regular vim cannot access it even though it has been compiled with the
-# appropriate set of flags..
-alias vim="gvim -v"
-
 
 ### }}}
 ### functions {{{
