@@ -75,6 +75,9 @@ alias ehu="cd export/home/Users/$USER"
 
 alias oi="cd opt/interflo"
 
+# Remote servers cannot handle xterm-256color
+alias ssh="TERM=xterm ssh"
+
 
 ### }}}
 ### functions {{{
