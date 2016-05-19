@@ -215,6 +215,9 @@ then
 
     # specify plugins here
     zgen load mollifier/cd-gitroot
+    zgen load zsh-users/zsh-autosuggestions
+    zgen load willghatch/zsh-cdr
+    zgen load zsh-users/zaw
 
     # generate the init script from plugins above
     zgen save
