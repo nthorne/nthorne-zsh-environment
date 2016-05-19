@@ -205,4 +205,20 @@ else
   return `error "unknown host"`
 fi
 
+# load zgen
+if [[ -d "${HOME}/.zgen" ]]
+then
+  source "${HOME}/.zgen/zgen.zsh"
+
+  # if the init scipt doesn't exist
+  if ! zgen saved; then
+
+    # specify plugins here
+    zgen load mollifier/cd-gitroot
+
+    # generate the init script from plugins above
+    zgen save
+  fi
+fi
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
