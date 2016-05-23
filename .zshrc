@@ -213,11 +213,17 @@ then
   # if the init scipt doesn't exist
   if ! zgen saved; then
 
+    # pull in oh-my-zsh for dependencies
+    zgen oh-my-zsh
+
     # specify plugins here
     zgen load mollifier/cd-gitroot
     zgen load zsh-users/zsh-autosuggestions
     zgen load willghatch/zsh-cdr
     zgen load zsh-users/zaw
+
+    zgen oh-my-zsh plugins/web-search
+    zgen oh-my-zsh plugins/wd
 
     # generate the init script from plugins above
     zgen save
