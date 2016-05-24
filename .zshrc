@@ -35,9 +35,6 @@ SAVEHIST=3000
 # VI settings
 export EXINIT="set ai sm sw=2 sts=2 bs=2 showmode ruler guicursor=a:blinkon0"
 
-# use vi keybindings
-bindkey -v
-
 zle -N globalias
 zle -N rationalise-dot
 
@@ -229,5 +226,8 @@ then
     zgen save
   fi
 fi
+
+# use vi keybindings
+bindkey -v
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
