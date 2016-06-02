@@ -220,6 +220,11 @@ alias -s hpp=vim
 # use vi keybindings
 bindkey -v
 
+# we need to re-set this one because of bindkey -v,
+# and bindkey -v cannot take place before plugins
+# section, or my vim keybindings will be messed up.
+bindkey '^X;' zaw
+
 
 ### }}}
 ### Profile selection {{{
