@@ -69,32 +69,6 @@ BOLD="%{"$'\033[01;39m'"%}"
 NORM="%{"$'\033[00m'"%}"
 
 
-### }}}
-### aliases {{{
-###
-
-alias ls='ls -AF --color=auto'
-alias grep='grep --color=auto'
-alias vim="nvim"
-alias view="nvim -R"
-
-#global aliases
-alias -g C='| wc -l'
-alias -g F='| fgrep'
-alias -g FI='| fgrep -i'
-alias -g FV='| fgrep -v'
-alias -g G='| egrep'
-alias -g H='| head'
-alias -g L='| less'
-alias -g S='| sort'
-alias -g T='| tail'
-alias -g EN="2>/dev/null"
-alias -g ON="1>/dev/null"
-
-# suffix aliases
-alias -s md=vim
-alias -s cpp=vim
-alias -s hpp=vim
 
 ### }}}
 ### function definitions {{{
@@ -179,28 +153,11 @@ function rationalise-dot () {
 
 
 ### }}}
+### Plugins {{{
+###
 
-# determine which profile to source based upon hostname
-# NOTE: The dirty, ugly hack of removing trailing numericals, is in order to
-#  cope with the fact that at work, there is no zsh/regex module :(
-CURRENT_HOST=`hostname`
-CURRENT_HOST=${CURRENT_HOST%%[0-9]*}
-if [[ $CURRENT_HOST == "slaptopen" || $CURRENT_HOST == "dev" || $CURRENT_HOST == "asusen" ]]
-then
-  test -f ~/.zsh/profiles/home.zshrc && source ~/.zsh/profiles/home.zshrc
-elif [[ $CURRENT_HOST == "gbguxs" ]]
-then
-  test -f ~/.zsh/profiles/work.zshrc && source ~/.zsh/profiles/work.zshrc
-elif [[ $CURRENT_HOST == "mintvm" ]]
-then
-  test -f ~/.zsh/profiles/workvm.zshrc && source ~/.zsh/profiles/workvm.zshrc
-elif [[ $CURRENT_HOST =~ "BTIS" ]]
-then
-  # Running under Cygwin - no customizations yet
-  ;
-else
-  return `error "unknown host"`
-fi
+# NOTE: Keep the plugins a bit from the end, since some of them re-alias,
+# change keybindings etc.
 
 # load zgen
 if [[ -d "${HOME}/.zgen" ]]
@@ -227,7 +184,66 @@ then
   fi
 fi
 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+### }}}
+### aliases {{{
+###
+
+alias ls='ls -AF --color=auto'
+alias grep='grep --color=auto'
+alias vim="nvim"
+alias view="nvim -R"
+
+#global aliases
+alias -g C='| wc -l'
+alias -g F='| fgrep'
+alias -g FI='| fgrep -i'
+alias -g FV='| fgrep -v'
+alias -g G='| egrep'
+alias -g H='| head'
+alias -g L='| less'
+alias -g S='| sort'
+alias -g T='| tail'
+alias -g EN="2>/dev/null"
+alias -g ON="1>/dev/null"
+
+# suffix aliases
+alias -s md=vim
+alias -s cpp=vim
+alias -s hpp=vim
+
+### }}}
+### Key bindings {{{
+###
+
 # use vi keybindings
 bindkey -v
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+### }}}
+### Profile selection {{{
+###
+
+# determine which profile to source based upon hostname
+# NOTE: The dirty, ugly hack of removing trailing numericals, is in order to
+#  cope with the fact that at work, there is no zsh/regex module :(
+CURRENT_HOST=`hostname`
+CURRENT_HOST=${CURRENT_HOST%%[0-9]*}
+if [[ $CURRENT_HOST == "slaptopen" || $CURRENT_HOST == "dev" || $CURRENT_HOST == "asusen" ]]
+then
+  test -f ~/.zsh/profiles/home.zshrc && source ~/.zsh/profiles/home.zshrc
+elif [[ $CURRENT_HOST == "gbguxs" ]]
+then
+  test -f ~/.zsh/profiles/work.zshrc && source ~/.zsh/profiles/work.zshrc
+elif [[ $CURRENT_HOST == "mintvm" ]]
+then
+  test -f ~/.zsh/profiles/workvm.zshrc && source ~/.zsh/profiles/workvm.zshrc
+elif [[ $CURRENT_HOST =~ "BTIS" ]]
+then
+  # Running under Cygwin - no customizations yet
+  ;
+else
+  return `error "unknown host"`
+fi
+### }}}
