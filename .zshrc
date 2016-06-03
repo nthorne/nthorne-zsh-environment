@@ -184,7 +184,6 @@ then
   fi
 fi
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 ### }}}
 ### aliases {{{
@@ -225,6 +224,12 @@ bindkey -v
 # section, or my vim keybindings will be messed up.
 bindkey '^X;' zaw
 
+### }}}
+### More plugins {{{
+###
+
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 ### }}}
 ### Profile selection {{{
