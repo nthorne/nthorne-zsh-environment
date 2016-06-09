@@ -175,6 +175,7 @@ then
     zgen load zsh-users/zsh-autosuggestions
     zgen load willghatch/zsh-cdr
     zgen load zsh-users/zaw
+    zgen load alexisbrenon/oh-my-zsh-reminder
 
     zgen oh-my-zsh plugins/web-search
     zgen oh-my-zsh plugins/wd
