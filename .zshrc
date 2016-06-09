@@ -3,6 +3,18 @@
 ###
 
 ### }}}
+### color definitions {{{
+###
+
+BLACK="%{"$'\033[01;30m'"%}"
+GREEN="%{"$'\033[01;32m'"%}"
+RED="%{"$'\033[01;31m'"%}"
+YELLOW="%{"$'\033[01;33m'"%}"
+BLUE="%{"$'\033[01;34m'"%}"
+BOLD="%{"$'\033[01;39m'"%}"
+NORM="%{"$'\033[00m'"%}"
+
+### }}}
 ### modules {{{
 ###
 
@@ -15,6 +27,15 @@ compinit
 
 # add git completion
 source ~/.zsh/completion/_git
+
+# Load and configure vcs_info
+autoload -Uz vcs_info
+setopt prompt_subst
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:git*' unstagedstr "${RED}+${NORM}"
+zstyle ':vcs_info:git*' stagedstr "${GREEN}+${NORM}"
+zstyle ':vcs_info:git*' formats " branch:%b%u%c"
+zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
 
 
 ### }}}
@@ -57,28 +78,24 @@ export LS_COLORS='ow=01;35:di=01;35'
 export RPROMPT="${%}[%?]%{%}"
 
 ### }}}
-### color definitions {{{
-###
-
-BLACK="%{"$'\033[01;30m'"%}"
-GREEN="%{"$'\033[01;32m'"%}"
-RED="%{"$'\033[01;31m'"%}"
-YELLOW="%{"$'\033[01;33m'"%}"
-BLUE="%{"$'\033[01;34m'"%}"
-BOLD="%{"$'\033[01;39m'"%}"
-NORM="%{"$'\033[00m'"%}"
-
-
-
-### }}}
 ### function definitions {{{
 ###
+
+# function +vi-git-untracked()
+#   show the ? marker if there is untracked files.
+function +vi-git-untracked(){
+  if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == 'true' ]] && \
+    git status --porcelain | grep '??' &> /dev/null ; then
+    hook_com[staged]+="${RED}?${NORM}"
+  fi
+}
 
 # function precmd() {{{
 #   executed before each prompt
 function precmd()
 {
-  export PS1="${BLUE}[%n@%m${GREEN}$(__git_ps1 ' branch:%s')${BLUE}]${RED} %~${NORM} "
+  vcs_info
+  export PS1="${BLUE}[%n@%m${GREEN}\$vcs_info_msg_0_${BLUE}]${RED} %~${NORM} "
 
   # if the virtualenv environment variable is set, and the RPROMPT does not
   # contain the env token, add the token to the RPROMPT
