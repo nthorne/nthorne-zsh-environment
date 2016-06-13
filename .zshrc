@@ -242,6 +242,8 @@ bindkey -v
 # section, or my vim keybindings will be messed up.
 bindkey '^X;' zaw
 
+bindkey '^Xk' run-help
+
 ### }}}
 ### More plugins {{{
 ###
