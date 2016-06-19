@@ -211,6 +211,7 @@ alias ls='ls -AF --color=auto'
 alias grep='grep --color=auto'
 alias vim="nvim"
 alias view="nvim -R"
+alias auu="apt update && apt upgrade"
 
 #global aliases
 alias -g C='| wc -l'
