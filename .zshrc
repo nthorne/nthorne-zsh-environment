@@ -249,6 +249,11 @@ bindkey '^Xk' run-help
 ### More plugins {{{
 ###
 
+### }}}
+### Options {{{
+###
+setopt nosharehistory
+
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
