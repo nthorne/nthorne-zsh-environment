@@ -77,6 +77,9 @@ export LS_COLORS='ow=01;35:di=01;35'
 
 export RPROMPT="${%}[%?]%{%}"
 
+# Disable oh-my-zsh update check query
+export DISABLE_UPDATE_PROMPT="true"
+
 ### }}}
 ### function definitions {{{
 ###
