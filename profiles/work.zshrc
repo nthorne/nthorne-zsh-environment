@@ -252,4 +252,4 @@ function construct_subproject_quickcd_aliases()
 
 ### }}}
 
-construct_subproject_quickcd_aliases
+#construct_subproject_quickcd_aliases
