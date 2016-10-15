@@ -198,6 +198,7 @@ then
     zgen load alexisbrenon/oh-my-zsh-reminder
     zgen load Tarrasch/zsh-autoenv
     zgen load Tarrasch/zsh-bd
+    zgen load unixorn/git-extra-commands
 
     zgen oh-my-zsh plugins/web-search
     zgen oh-my-zsh plugins/wd
