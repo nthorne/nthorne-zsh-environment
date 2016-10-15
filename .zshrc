@@ -196,6 +196,7 @@ then
     zgen load willghatch/zsh-cdr
     zgen load zsh-users/zaw
     zgen load alexisbrenon/oh-my-zsh-reminder
+    zgen load Tarrasch/zsh-autoenv
 
     zgen oh-my-zsh plugins/web-search
     zgen oh-my-zsh plugins/wd
