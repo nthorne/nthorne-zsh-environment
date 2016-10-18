@@ -199,7 +199,6 @@ then
     zgen load Tarrasch/zsh-autoenv
     zgen load Tarrasch/zsh-bd
     zgen load unixorn/git-extra-commands
-    zgen load fbzhong/git-gerrit
 
     zgen oh-my-zsh plugins/web-search
     zgen oh-my-zsh plugins/wd
