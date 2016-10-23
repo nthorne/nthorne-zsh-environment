@@ -6,70 +6,30 @@
 
 source ~/.zsh/lib/common.zsh
 
-# function read_current_project() {{{
-#   read the configuration file that details current project,
-#   if one such file exists
-function read_current_project()
+# function precmd_adaptation() {{{
+#   extend precmd
+function precmd_adaptation()
 {
-  if [[ ! -f ~/current_project.zsh ]]
+  if [[ -n "$CURRENT_PROJECT" ]]
+  then
+    if [[ ! "$RPROMPT" =~ project: ]]
+    then
+      export RPROMPT="$RPROMPT ${BLUE}[${GREEN}project:$CURRENT_PROJECT${BLUE}]${NORM}"
+
+      construct_subproject_quickcd_aliases
+    fi
+  elif [[ ! "$RPROMPT" =~ NO PROJECT ]]
   then
     export RPROMPT="$RPROMPT ${BLUE}[${RED}NO PROJECT${BLUE}]${NORM}"
-  else
-    setopt KSH_ARRAYS
-    source ~/current_project.zsh
-    unsetopt KSH_ARRAYS
-
-    if [[ -z $CURRENT_PROJECT ]]
-    then
-      return
-    fi
-
-    if [[ -z $CURRENT_PROJECT_ROOT ]]
-    then
-      return
-    fi
-
-    if [[ -z $CURRENT_PROJECT_INSTALL_PATH ]]
-    then
-      return `error '$CURRENT_PROJECT_INSTALL_PATH not set in ~/current_project.zsh'`
-    fi
-
-    if [[ -z $CURRENT_PROJECT_REMOTE_USER ]]
-    then
-      return `error '$CURRENT_PROJECT_REMOTE_USER not set in ~/current_project.zsh'`
-    fi
-
-    if [[ -z $CURRENT_PROJECT_REMOTE_ROOT ]]
-    then
-      return `error '$CURRENT_PROJECT_REMOTE_ROOT not set in ~/current_project.zsh'`
-    fi
-
-    if [[ -z $CURRENT_PROJECT_REMOTE_PATH ]]
-    then
-      return `error '$CURRENT_PROJECT_REMOTE_PATH not set in ~/current_project.zsh'`
-    fi
-
-    if [[ ! -d $CURRENT_PROJECT_ROOT ]]
-    then
-      return `error "$CURRENT_PROJECT_ROOT does not exist or is not a directory"`
-    fi
-
-    export RPROMPT="$RPROMPT ${BLUE}[${GREEN}project:$CURRENT_PROJECT${BLUE}]${NORM}"
   fi
 }
-# }}}
 
-read_current_project
 
 ### }}}
 ### aliases {{{
 ###
 
 alias mkstubs="buildtcc.sh stub_targets"
-
-alias ss="batch_nontest fgrep"
-
-alias p150="~/repos/scripts/if150_parse.py"
 
 alias ehu="cd export/home/Users/$USER"
 
@@ -83,16 +43,6 @@ alias ssh="TERM=xterm ssh"
 ### functions {{{
 ###
 
-# function batch_nontest() {{{
-#   run a given command on all non-unit test cpp/hpp files in PWD and below
-#
-# arguments:
-#   $@ - the command to execute
-function batch_nontest()
-{
-  find . -type f -name '*.?pp' ! -name '*[Tt]est*' ! -name '*[Ss]tub*' -exec $@ {} +
-}
-# }}}
 
 # function mkscript() {{{
 #   helper function for creating script file
@@ -238,4 +188,3 @@ function tx () {
 
 ### }}}
 
-construct_subproject_quickcd_aliases

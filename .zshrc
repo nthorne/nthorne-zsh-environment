@@ -118,6 +118,11 @@ function precmd()
       export RPROMPT="${RPROMPT/$ENV_TOKEN*]/$ENV_TOKEN$ENV_HEAD]}"
     fi
   fi
+
+  if [[ -n $(whence precmd_adaptation) ]]
+  then
+    precmd_adaptation
+  fi
 }
 # }}}
 
@@ -289,3 +294,7 @@ else
   return `error "unknown host"`
 fi
 ### }}}
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/nthorne/.sdkman"
+[[ -s "/home/nthorne/.sdkman/bin/sdkman-init.sh" ]] && source "/home/nthorne/.sdkman/bin/sdkman-init.sh"
