@@ -8,19 +8,19 @@ source ~/.zsh/lib/common.zsh
 
 # function precmd_adaptation() {{{
 #   extend precmd
-function precmd_adaptation()
+function _precmd_adaptation()
 {
   if [[ -n "$CURRENT_PROJECT" ]]
   then
     if [[ ! "$RPROMPT" =~ project: ]]
     then
-      export RPROMPT="$RPROMPT ${BLUE}[${GREEN}project:$CURRENT_PROJECT${BLUE}]${NORM}"
+      export RPROMPT="${BLUE}[${GREEN}project:$CURRENT_PROJECT${BLUE}]${NORM}"
 
       construct_subproject_quickcd_aliases
     fi
-  elif [[ ! "$RPROMPT" =~ NO PROJECT ]]
+  elif [[ ! "$RPROMPT" =~ PROJECT ]]
   then
-    export RPROMPT="$RPROMPT ${BLUE}[${RED}NO PROJECT${BLUE}]${NORM}"
+    export RPROMPT="${BLUE}[${RED}NO PROJECT${BLUE}]${NORM}"
   fi
 }
 
@@ -185,6 +185,13 @@ function tx () {
   fi
 }
 
+eval "$(direnv hook zsh)"
+
+# NOTE: Place this one after the direnv hook to get proper evaluation order.
+typeset -ag precmd_functions;
+if [[ -z ${precmd_functions[(r)_precmd_adaptation]} ]]; then
+  precmd_functions+=_precmd_adaptation;
+fi
 
 ### }}}
 

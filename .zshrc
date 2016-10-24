@@ -118,11 +118,6 @@ function precmd()
       export RPROMPT="${RPROMPT/$ENV_TOKEN*]/$ENV_TOKEN$ENV_HEAD]}"
     fi
   fi
-
-  if [[ -n $(whence precmd_adaptation) ]]
-  then
-    precmd_adaptation
-  fi
 }
 # }}}
 
