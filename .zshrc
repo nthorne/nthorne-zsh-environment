@@ -80,6 +80,9 @@ export RPROMPT="${%}[%?]%{%}"
 # Disable oh-my-zsh update check query
 export DISABLE_UPDATE_PROMPT="true"
 
+# Disable SSH_ASKPASS
+export SSH_ASKPASS=""
+
 ### }}}
 ### function definitions {{{
 ###
@@ -208,6 +211,8 @@ then
   fi
 fi
 
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=23"
+
 
 ### }}}
 ### aliases {{{
@@ -278,7 +283,7 @@ then
 elif [[ $CURRENT_HOST == "gbguxs" ]]
 then
   test -f ~/.zsh/profiles/work.zshrc && source ~/.zsh/profiles/work.zshrc
-elif [[ $CURRENT_HOST == "mintvm" ]]
+elif [[ $CURRENT_HOST == "mintvm" || $CURRENT_HOST == "nixos" ]]
 then
   test -f ~/.zsh/profiles/workvm.zshrc && source ~/.zsh/profiles/workvm.zshrc
 elif [[ $CURRENT_HOST =~ "BTIS" ]]
