@@ -43,7 +43,7 @@ zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
 ###
 
 export PAGER="/bin/less -sR"
-export EDITOR="vim"
+export EDITOR="nvim"
 
 # Tell Java that XMonad is nonreparenting in order to avoid all-grey windows
 export _JAVA_AWT_WM_NONREPARENTING=1
