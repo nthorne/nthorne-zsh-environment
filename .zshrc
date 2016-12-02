@@ -198,7 +198,6 @@ then
     zgen load zsh-users/zsh-autosuggestions
     zgen load willghatch/zsh-cdr
     zgen load zsh-users/zaw
-    zgen load alexisbrenon/oh-my-zsh-reminder
     zgen load Tarrasch/zsh-autoenv
     zgen load Tarrasch/zsh-bd
     zgen load unixorn/git-extra-commands
