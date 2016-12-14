@@ -38,3 +38,5 @@ function mkscript()
   echo "#!$INTERPRETER" > $1 ; chmod u+x $1
 }
 # }}}
+
+eval "$(direnv hook zsh)"
