@@ -22,6 +22,7 @@ CURRENT_HOST=${CURRENT_HOST%%[0-9]*}
 if [[ $CURRENT_HOST == "slaptopen" || $CURRENT_HOST == "dev" || $CURRENT_HOST == "asusen" ]]
 then
   test -f ~/.zsh/profiles/home.zprofile && source ~/.zsh/profiles/home.zprofile
+  if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 elif [[ $CURRENT_HOST == "gbguxs" ]]
 then
   test -f ~/.zsh/profiles/work.zprofile && source ~/.zsh/profiles/work.zprofile
@@ -34,3 +35,4 @@ then
 else
   return `error "unknown host"`
 fi
+
