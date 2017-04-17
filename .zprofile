@@ -19,7 +19,7 @@ export TERM="xterm-256color"
 # determine which profile to source based upon hostname
 CURRENT_HOST=`hostname`
 CURRENT_HOST=${CURRENT_HOST%%[0-9]*}
-if [[ $CURRENT_HOST == "slaptopen" || $CURRENT_HOST == "dev" || $CURRENT_HOST == "asusen" ]]
+if [[ $CURRENT_HOST == "slaptopen" || $CURRENT_HOST == "dev" || $CURRENT_HOST == "asusen" || $CURRENT_HOST = "nixlaptop" ]]
 then
   test -f ~/.zsh/profiles/home.zprofile && source ~/.zsh/profiles/home.zprofile
   if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
