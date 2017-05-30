@@ -279,9 +279,6 @@ CURRENT_HOST=${CURRENT_HOST%%[0-9]*}
 if [[ $CURRENT_HOST == "slaptopen" || $CURRENT_HOST == "dev" || $CURRENT_HOST == "asusen" || $CURRENT_HOST == "nixlaptop" ]]
 then
   test -f ~/.zsh/profiles/home.zshrc && source ~/.zsh/profiles/home.zshrc
-elif [[ $CURRENT_HOST == "gbguxs" ]]
-then
-  test -f ~/.zsh/profiles/work.zshrc && source ~/.zsh/profiles/work.zshrc
 elif [[ $CURRENT_HOST == "mintvm" || $CURRENT_HOST == "nixos" ]]
 then
   test -f ~/.zsh/profiles/workvm.zshrc && source ~/.zsh/profiles/workvm.zshrc

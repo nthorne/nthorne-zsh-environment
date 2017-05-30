@@ -23,15 +23,9 @@ if [[ $CURRENT_HOST == "slaptopen" || $CURRENT_HOST == "dev" || $CURRENT_HOST ==
 then
   test -f ~/.zsh/profiles/home.zprofile && source ~/.zsh/profiles/home.zprofile
   if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
-elif [[ $CURRENT_HOST == "gbguxs" ]]
-then
-  test -f ~/.zsh/profiles/work.zprofile && source ~/.zsh/profiles/work.zprofile
 elif [[ $CURRENT_HOST == "mintvm" || $CURRENT_HOST == "nixos" ]]
 then
   test -f ~/.zsh/profiles/workvm.zprofile && source ~/.zsh/profiles/workvm.zprofile
-elif [[ $CURRENT_HOST =~ "BTIS" ]]
-then
-  test -f ~/.zsh/profiles/work_cyg.zprofile && source ~/.zsh/profiles/work_cyg.zprofile
 else
   return `error "unknown host"`
 fi
