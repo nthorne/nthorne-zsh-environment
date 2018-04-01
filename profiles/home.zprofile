@@ -45,3 +45,6 @@ export PATH=$PATH:/home/nthorne/.cabal/bin/
 # For scala
 export SCALA_HOME=/opt/scala
 export PATH=$PATH:$SCALA_HOME/bin/
+
+# Needed for deoplete
+export PYTHONPATH=$PYTHONPATH:$HOME/.local/lib/python3.6/site-packages/
