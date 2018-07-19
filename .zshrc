@@ -48,11 +48,6 @@ export EDITOR="nvim"
 # Tell Java that XMonad is nonreparenting in order to avoid all-grey windows
 export _JAVA_AWT_WM_NONREPARENTING=1
 
-# history settings
-HISTFILE=~/.zshhistory
-HISTSIZE=3000
-SAVEHIST=3000
-
 # VI settings
 export EXINIT="set ai sm sw=2 sts=2 bs=2 showmode ruler guicursor=a:blinkon0"
 
@@ -211,6 +206,14 @@ then
 fi
 
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=23"
+
+# history settings; reset by some plugin somewhere, so..
+HISTFILE=~/.zshhistory
+HISTSIZE=50000
+SAVEHIST=40000
+HIST_EXPIRE_DUPS_FIRST=1
+HIST_FIND_NO_DUPS=1
+HIST_IGNORE_DUPS=1
 
 
 ### }}}
