@@ -10,13 +10,16 @@ source ~/.zsh/lib/common.zsh
 #   extend precmd
 function _precmd_adaptation()
 {
+  if [[ -n "$PROJECT_SETTINGS" && -f "$PROJECT_SETTINGS" && -z "$CURRENT_PROJECT" ]]
+  then
+    source "$PROJECT_SETTINGS"
+  fi
+
   if [[ -n "$CURRENT_PROJECT" ]]
   then
     if [[ ! "$RPROMPT" =~ project: ]]
     then
       export RPROMPT="${BLUE}[${GREEN}project:$CURRENT_PROJECT${BLUE}]${NORM}"
-
-      construct_subproject_quickcd_aliases
     fi
   elif [[ ! "$RPROMPT" =~ PROJECT ]]
   then
@@ -79,90 +82,6 @@ function mkscript()
 }
 # }}}
 
-# function construct_subproject_quickcd_aliases() {{{
-#   construct nifty path aliases based on the CURRENT_PROJECT_ROOT variable
-function construct_subproject_quickcd_aliases()
-{
-  local source_folder
-  local project_root
-
-  if [[ ! -z $CURRENT_PROJECT_ROOT ]]
-  then
-    for source_folder in $(find $CURRENT_PROJECT_ROOT -type d -name source)
-    do
-      project_root=$source_folder
-      project_name=$(basename ${project_root%%Implementation/source})
-      if [[ -n "$project_name" && "$project_name" != "source" ]]
-      then
-        alias $project_name="cd ${project_root%%Implementation/source}"
-      fi
-    done
-  fi
-}
-# }}}
-
-# function mkbranches() {{{
-#   create a matching set of git branches in both Core and Adaptation in
-#   $CURRENT_PROJECT_ROOT
-#
-# arguments:
-#   $1 - the name of the new branches
-function mkbranches()
-{
-  if [[ ! -z $CURRENT_PROJECT_ROOT && -d $CURRENT_PROJECT_ROOT && ! -z $1 ]]
-  then
-    pushd $CURRENT_PROJECT_ROOT > /dev/null
-    echo "*** Creating Adaptation branch ***"
-    git checkout -b $1
-    cd Implementation/TCC_SW
-    echo
-    echo "*** Creating Core branch ***"
-    git checkout -b $1
-    popd > /dev/null
-  fi
-}
-# }}}
-
-# function cobranches() {{{
-#   check out a matching pair of branches in both Core and Adaptation
-#
-# arguments:
-#   $1 - the name of the branch
-function cobranches()
-{
-  if [[ ! -z $CURRENT_PROJECT_ROOT && -d $CURRENT_PROJECT_ROOT && ! -z $1 ]]
-  then
-    pushd $CURRENT_PROJECT_ROOT > /dev/null
-    echo "*** Switching Adaptation branch ***"
-    git checkout $1
-    cd Implementation/TCC_SW
-    echo
-    echo "*** Switching Core branch ***"
-    git checkout $1
-    popd > /dev/null
-  fi
-}
-# }}}
-
-# function rmbranches() {{{
-#   delete a matching pair of branches in both Core and Adaptation
-#
-# arguments:
-#   $1 - the name of the branch
-function rmbranches()
-{
-  if [[ ! -z $CURRENT_PROJECT_ROOT && -d $CURRENT_PROJECT_ROOT && ! -z $1 ]]
-  then
-    pushd $CURRENT_PROJECT_ROOT > /dev/null
-    echo "*** Deleting Adaptation branch ***"
-    git branch -d $1
-    cd Implementation/TCC_SW
-    echo
-    echo "*** Deleting Core branch ***"
-    git branch -d $1
-    popd > /dev/null
-  fi
-}
 
 # function cob() {{{
 #   recursively check out a branch in each submodule, and merge the
