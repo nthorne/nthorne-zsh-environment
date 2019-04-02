@@ -32,7 +32,7 @@ function error()
   exit 1
 }
 
-ln -s ${PWD} ${HOME}
+(cd ..; ln -s ${PWD}/nthorne-zsh-environment ${HOME}/.zsh)
 
 pushd ${HOME}
 ln -s .zsh/.zshrc .
