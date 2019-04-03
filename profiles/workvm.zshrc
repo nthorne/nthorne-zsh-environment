@@ -32,12 +32,8 @@ function _precmd_adaptation()
 ### aliases {{{
 ###
 
-alias mkstubs="buildtcc.sh stub_targets"
-
-alias ehu="cd export/home/Users/$USER"
-
-alias oi="cd opt/interflo"
-
+alias sem="${HOME}/bin/aospsync.sh -p ${HOME}/work/sem -r as"
+alias ihu="${HOME}/bin/aospsync.sh -p ${HOME}/work/ihu -r as"
 # Remote servers cannot handle xterm-256color
 alias ssh="TERM=xterm ssh"
 
