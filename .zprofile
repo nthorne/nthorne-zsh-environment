@@ -12,7 +12,7 @@
 #xset b off
 
 export PAGER="/bin/less -sR"
-export TERM="screen-256color"
+#export TERM="screen-256color"
 
 ### }}}
 
