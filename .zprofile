@@ -14,6 +14,8 @@
 export PAGER="/bin/less -sR"
 #export TERM="screen-256color"
 
+export PATH="$PATH:$HOME/.local/bin"
+
 ### }}}
 
 # determine which profile to source based upon hostname
