@@ -197,8 +197,7 @@ then
     zgen load Tarrasch/zsh-bd
     zgen load unixorn/git-extra-commands
 
-    zgen oh-my-zsh plugins/web-search
-    zgen oh-my-zsh plugins/wd
+    zgen oh-my-zsh plugins/fasd
 
     # generate the init script from plugins above
     zgen save
