@@ -193,9 +193,10 @@ then
     zgen load zsh-users/zsh-autosuggestions
     zgen load willghatch/zsh-cdr
     zgen load zsh-users/zaw
-    zgen load Tarrasch/zsh-autoenv
     zgen load Tarrasch/zsh-bd
     zgen load unixorn/git-extra-commands
+    zgen load wfxr/forgit
+    zgen load djui/alias-tips
 
     zgen oh-my-zsh plugins/fasd
 
