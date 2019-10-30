@@ -100,6 +100,13 @@ function tx () {
   fi
 }
 
+function csdb()
+{
+  echo "Building cscope database.."
+  find . -type f -name \*.c -o -name \*.h | grep -Ev '(stub|test)' > cscope.files
+  cscope -bcq
+}
+
 eval "$(direnv hook zsh)"
 
 # NOTE: Place this one after the direnv hook to get proper evaluation order.
