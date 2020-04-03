@@ -108,6 +108,15 @@ function csdb()
   cscope -bcq
 }
 
+function ccls-init()
+{
+  echo "Building ccls settings file.."
+  echo "clang" > .ccls
+  echo "%c -std=c99" >> .ccls
+  echo "%cpp -std=c++17" >> .ccls
+  find . -name \*include -o -name testutils -o -name gtest_gmock | fgrep -v build | xargs -I{} echo "-I{}" >> .ccls
+}
+
 eval "$(direnv hook zsh)"
 
 # NOTE: Place this one after the direnv hook to get proper evaluation order.
