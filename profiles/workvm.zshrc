@@ -117,6 +117,14 @@ function ccls-init()
   find . -name \*include -o -name testutils -o -name gtest_gmock | fgrep -v build | xargs -I{} echo "-I{}" >> .ccls
 }
 
+function bb()
+{
+  test -n "${CURRENT_WORK_PROJECT_ROOT}" || return `error "CURRENT_WORK_PROJECT_ROOT not set"`
+  test -n "${CURRENT_WORK_PROJECT_BUILD_TARGET}" || return `error "CURRENT_WORK_PROJECT_BUILD_TARGET not set"`
+
+  ${HOME}/bin/aospsync.sh -p ${CURRENT_WORK_PROJECT_ROOT} -r as -t ${CURRENT_WORK_PROJECT_BUILD_TARGET} $@
+}
+
 eval "$(direnv hook zsh)"
 
 # NOTE: Place this one after the direnv hook to get proper evaluation order.
