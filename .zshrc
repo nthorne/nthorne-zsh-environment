@@ -51,6 +51,16 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 # VI settings
 export EXINIT="set ai sm sw=2 sts=2 bs=2 showmode ruler guicursor=a:blinkon0"
 
+export FZF_DEFAULT_OPTS="
+--layout=reverse
+--info=inline
+--height=80%
+--multi
+--preview '([[ -f {} ]] && (cat {})) || ([[ -d {} ]] && (tree -C {} | less)) || echo {} 2> /dev/null | head -200'
+--color='hl:148,hl+:154,pointer:032,marker:010,bg+:237,gutter:008'
+--bind '?:toggle-preview'
+"
+
 zle -N globalias
 zle -N rationalise-dot
 
