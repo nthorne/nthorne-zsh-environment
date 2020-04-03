@@ -36,6 +36,7 @@ alias sem="${HOME}/bin/aospsync.sh -p ${HOME}/work/sem -r as -t gtt_hydra-eng"
 alias ihu="${HOME}/bin/aospsync.sh -p ${HOME}/work/ihu -r as -t ihu_kraken-eng"
 # Remote servers cannot handle xterm-256color
 alias ssh="TERM=xterm ssh"
+alias mux=tmuxinator
 
 
 ### }}}
