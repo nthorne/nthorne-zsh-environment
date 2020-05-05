@@ -125,6 +125,22 @@ function bb()
   ${HOME}/bin/aospsync.sh -p ${CURRENT_WORK_PROJECT_ROOT} -r as -t ${CURRENT_WORK_PROJECT_BUILD_TARGET} $@
 }
 
+function mkp()
+{
+  local readonly workdir="${HOME}/work/"
+  test -n "$1" || error "Base project not specified."
+  test -d "${workdir}/$1" || error "Base project does not exist."
+
+  test -n "$2" || error "New project name not specified."
+  test -d "${workdir}/$2" && error "New project already exists."
+
+  sudo btrfs su sn "${workdir}/$1" "${workdir}/$1-$2" || error "Base project cloning failed."
+  cd "${workdir}/$1-$2" || error "Failed to enter project directory"
+  rm -rf .direnv && direnv allow
+
+  mux start ap "$1-$2"
+}
+
 eval "$(direnv hook zsh)"
 
 # NOTE: Place this one after the direnv hook to get proper evaluation order.
