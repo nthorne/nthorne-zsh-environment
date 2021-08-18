@@ -138,6 +138,20 @@ function mkp()
   cd "${workdir}/$1-$2" || error "Failed to enter project directory"
 }
 
+function mkt()
+{
+  set -x
+  local readonly logs="${HOME}/Downloads/$1.zip"
+  local readonly ticketdir="${HOME}/tmp/tickets/$1"
+  test -f  ${logs} || error "${logs}: No such log file archive."
+  test -d  ${ticketdir} && error "${ticketdir}: Already exists."
+
+  mkdir -p ${ticketdir} && \
+    cd ${ticketdir} && \
+    unzip ${logs} && \
+    rm ${logs}
+}
+
 eval "$(direnv hook zsh)"
 
 # NOTE: Place this one after the direnv hook to get proper evaluation order.
