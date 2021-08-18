@@ -136,9 +136,6 @@ function mkp()
 
   sudo btrfs su sn "${workdir}/$1" "${workdir}/$1-$2" || error "Base project cloning failed."
   cd "${workdir}/$1-$2" || error "Failed to enter project directory"
-  rm -rf .direnv && direnv allow
-
-  mux start ap "$1-$2"
 }
 
 eval "$(direnv hook zsh)"
