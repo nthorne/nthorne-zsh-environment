@@ -14,3 +14,6 @@ export SCALA_HOME=/opt/scala-2.11.8
 
 # Needed for deoplete
 export PYTHONPATH=$PYTHONPATH:$HOME/.local/lib/python3.6/site-packages/
+
+# Needed for home manager
+test -f "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh" && source "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
