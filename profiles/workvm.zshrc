@@ -140,7 +140,6 @@ function mkp()
 
 function mkt()
 {
-  set -x
   local readonly logs="${HOME}/Downloads/$1.zip"
   local readonly ticketdir="${HOME}/tmp/tickets/$1"
   test -f  ${logs} || error "${logs}: No such log file archive."
