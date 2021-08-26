@@ -195,9 +195,6 @@ then
   # if the init scipt doesn't exist
   if ! zgen saved; then
 
-    # pull in oh-my-zsh for dependencies
-    zgen oh-my-zsh
-
     # specify plugins here
     zgen load mollifier/cd-gitroot
     zgen load zsh-users/zsh-autosuggestions
@@ -207,8 +204,6 @@ then
     zgen load unixorn/git-extra-commands
     zgen load wfxr/forgit
     zgen load djui/alias-tips
-
-    zgen oh-my-zsh plugins/fasd
 
     # generate the init script from plugins above
     zgen save
@@ -307,3 +302,42 @@ fi
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/nthorne/.sdkman"
 [[ -s "/home/nthorne/.sdkman/bin/sdkman-init.sh" ]] && source "/home/nthorne/.sdkman/bin/sdkman-init.sh"
+
+
+### UNDER EVALUATION {{{
+###
+
+function _fasd_z_to_subfolder() {
+  test -z "${1}" && echo "Missing subfolder argument." && return
+
+  readonly subfolder=$(fasd -dl "${PWD}" "${1}")
+  test -z  "${subfolder}" && echo "${1}: no such subfolder in fasd." && return
+  test -d "${subfolder}" || return
+
+  cd "${subfolder}"
+}
+
+## >>> This snippet is roughly from oh-my-zsh/fasd, in an attempt
+##     to drop the framework entirely.
+export ZSH_CACHE_DIR="${HOME}/.cache/zsh"
+test -d "${ZSH_CACHE_DIR}" || mkdir -p "${ZSH_CACHE_DIR}"
+
+# check if fasd is installed
+if (( ${+commands[fasd]} )); then
+  fasd_cache="${ZSH_CACHE_DIR}/fasd-init-cache"
+  if [[ "$commands[fasd]" -nt "$fasd_cache" || ! -s "$fasd_cache" ]]; then
+    fasd --init posix-alias zsh-hook zsh-ccomp zsh-ccomp-install \
+      zsh-wcomp zsh-wcomp-install >| "$fasd_cache"
+  fi
+  source "$fasd_cache"
+  unset fasd_cache
+
+  alias v='f -e "$EDITOR"'
+  alias o='a -e xdg-open'
+  alias j='zz'
+  alias zs=_fasd_z_to_subfolder
+fi
+
+## <<<
+
+### }}}
