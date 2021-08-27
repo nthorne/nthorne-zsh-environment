@@ -244,6 +244,12 @@ alias -g T='| tail'
 alias -g EN="2>/dev/null"
 alias -g ON="1>/dev/null"
 
+alias -g ...='cd ../..'
+alias -g ....='cd ../../..'
+alias -g .....='cd ../../../..'
+alias -g .....='cd ../../../../..'
+alias -g ......='cd ../../../../../..'
+
 # suffix aliases
 alias -s md=vim
 alias -s cpp=vim
@@ -271,6 +277,7 @@ bindkey '^Xk' run-help
 ### Options {{{
 ###
 setopt nosharehistory
+setopt AUTO_CD
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
