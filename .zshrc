@@ -230,6 +230,8 @@ alias grep='grep --color=auto'
 alias vim="nvim"
 alias view="nvim -R"
 alias auu="apt update && apt upgrade"
+alias _="sudo"
+alias less="less -R"
 
 #global aliases
 alias -g C='| wc -l'
