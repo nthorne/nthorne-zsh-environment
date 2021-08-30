@@ -21,9 +21,9 @@ NORM="%{"$'\033[00m'"%}"
 # source the common functions
 source ~/.zsh/lib/common.zsh
 
-# initialize the completion system
-autoload -U compinit
-compinit
+### }}}
+### completions {{{
+###
 
 # add git completion
 source ~/.zsh/completion/_git
@@ -37,6 +37,15 @@ zstyle ':vcs_info:git*' stagedstr "${GREEN}+${NORM}"
 zstyle ':vcs_info:git*' formats " branch:%b%u%c"
 zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
 
+# partial completion suggestions
+zstyle ':completion:*' list-suffixes zstyle ':completion:*' expand prefix suffix
+
+# case insensitive path-completion
+zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*'
+
+
+# initialize the completion system
+autoload -Uz compinit && compinit
 
 ### }}}
 ### general settings {{{
@@ -280,6 +289,12 @@ bindkey '^Xk' run-help
 ###
 setopt nosharehistory
 setopt AUTO_CD
+setopt MAGIC_EQUAL_SUBST
+setopt GLOB_COMPLETE
+unsetopt CASE_GLOB
+unsetopt CASE_MATCH
+setopt GLOB_ASSIGN
+setopt GLOB_STAR_SHORT
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
