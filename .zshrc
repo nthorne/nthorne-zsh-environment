@@ -25,9 +25,6 @@ source ~/.zsh/lib/common.zsh
 ### completions {{{
 ###
 
-# add git completion
-source ~/.zsh/completion/_git
-
 # Load and configure vcs_info
 autoload -Uz vcs_info
 setopt prompt_subst
@@ -213,7 +210,7 @@ then
     zgen load unixorn/git-extra-commands
     zgen load wfxr/forgit
     zgen load djui/alias-tips
-
+    zgen load zsh-users/zsh-completions
     # generate the init script from plugins above
     zgen save
   fi
