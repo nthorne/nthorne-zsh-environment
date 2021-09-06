@@ -241,6 +241,7 @@ alias view="nvim -R"
 alias auu="apt update && apt upgrade"
 alias _="sudo"
 alias less="less -R"
+alias md="mkdir"
 
 #global aliases
 alias -g C='| wc -l'
