@@ -335,7 +335,7 @@ export SDKMAN_DIR="/home/nthorne/.sdkman"
 function _fasd_z_to_subfolder() {
   test -z "${1}" && echo "Missing subfolder argument." && return
 
-  readonly subfolder=$(fasd -dl "${PWD}" "${1}")
+  readonly subfolder=$(fasd -dl1 "${PWD}" "${1}")
   test -z  "${subfolder}" && echo "${1}: no such subfolder in fasd." && return
   test -d "${subfolder}" || return
 
