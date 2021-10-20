@@ -239,6 +239,7 @@ alias auu="apt update && apt upgrade"
 alias _="sudo"
 alias less="less -R"
 alias md="mkdir"
+alias fd="fd -H"
 
 #global aliases
 alias -g C='| wc -l'
