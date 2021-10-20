@@ -341,6 +341,10 @@ function _fasd_z_to_subfolder() {
   cd "${subfolder}"
 }
 
+function hashcwd() {
+  hash -d "${1}="${PWD}""
+}
+
 ## >>> This snippet is roughly from oh-my-zsh/fasd, in an attempt
 ##     to drop the framework entirely.
 export ZSH_CACHE_DIR="${HOME}/.cache/zsh"
