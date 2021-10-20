@@ -254,11 +254,12 @@ alias -g T='| tail'
 alias -g EN="2>/dev/null"
 alias -g ON="1>/dev/null"
 
-alias -g ...='cd ../..'
-alias -g ....='cd ../../..'
-alias -g .....='cd ../../../..'
-alias -g .....='cd ../../../../..'
+# .. order matters here.
 alias -g ......='cd ../../../../../..'
+alias -g .....='cd ../../../../..'
+alias -g .....='cd ../../../..'
+alias -g ....='cd ../../..'
+alias -g ...='cd ../..'
 
 # suffix aliases
 alias -s md=vim
