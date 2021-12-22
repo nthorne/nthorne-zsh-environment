@@ -319,7 +319,8 @@ then
   # Running under Cygwin - no customizations yet
   ;
 else
-  return `error "unknown host"`
+  # Attempt the hostname based strategy or bail out..
+  source ~/.zsh/profiles/${CURRENT_HOST}.zshrc || return `error "unknown host"`
 fi
 ### }}}
 

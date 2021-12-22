@@ -29,6 +29,7 @@ elif [[ $CURRENT_HOST == "mintvm" || $CURRENT_HOST == "nixos" ]]
 then
   test -f ~/.zsh/profiles/workvm.zprofile && source ~/.zsh/profiles/workvm.zprofile
 else
-  return `error "unknown host"`
+  # Attempt the hostname based strategy or bail out..
+  source ~/.zsh/profiles/${CURRENT_HOST}.zprofile ]] || return `error "unknown host"`
 fi
 
