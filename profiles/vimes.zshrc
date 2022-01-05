@@ -26,11 +26,21 @@ function csdb()
 # TODO: Drop or adapt.
 function ccls-init()
 {
-  echo "Building ccls settings file.."
-  echo "clang" > .ccls
-  echo "%c -std=c99" >> .ccls
-  echo "%cpp -std=c++17" >> .ccls
-  find . -name \*include -o -name testutils -o -name gtest_gmock | fgrep -v build | xargs -I{} echo "-I{}" >> .ccls
+  local CCLS_CONFIG=${HOME}/src/unicorn/.ccls
+
+  echo "Using ${CCLS_CONFIG}.."
+  cat <<-CCLS_CONFIG_HEADER > ${CCLS_CONFIG}
+clang
+%h -x c++-header
+-Wall
+-Wextra
+%cpp -std=c++17
+%c -std=c11
+-I.
+CCLS_CONFIG_HEADER
+
+  find /home/nthorne/.conan/data -regextype egrep -iregex '.*/source/.*/include' ! -iregex '.*/test/.*' ! -iregex '.*/example/.*' | xargs -I{} echo "-I{}" >> ${CCLS_CONFIG}
+  find /home/nthorne/src/unicorn -iname src | xargs -I{} echo "-I{}" >> ${CCLS_CONFIG}
 }
 
 eval "$(direnv hook zsh)"
