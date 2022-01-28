@@ -194,9 +194,10 @@ function rationalise-dot () {
 # change keybindings etc.
 
 # load zgen
-if [[ -d "${HOME}/.zgen" ]]
+readonly zgen_base_path="${HOME}/.zgen"
+if [[ -d "${zgen_base_path}/" ]]
 then
-  source "${HOME}/.zgen/zgen.zsh"
+  source "${zgen_base_path}/zgen.zsh"
 
   # if the init scipt doesn't exist
   if ! zgen saved; then
@@ -211,6 +212,7 @@ then
     zgen load wfxr/forgit
     zgen load djui/alias-tips
     zgen load zsh-users/zsh-completions
+    zgen clone sachaos/todoist
     # generate the init script from plugins above
     zgen save
   fi
@@ -369,5 +371,8 @@ if (( ${+commands[fasd]} )); then
 fi
 
 ## <<<
+
+test -f "${zgen_base_path}/sachaos/todoist-master/todoist_functions_fzf.sh" && \
+  . "${zgen_base_path}/sachaos/todoist-master/todoist_functions_fzf.sh"
 
 ### }}}
