@@ -327,10 +327,6 @@ else
 fi
 ### }}}
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/home/nthorne/.sdkman"
-[[ -s "/home/nthorne/.sdkman/bin/sdkman-init.sh" ]] && source "/home/nthorne/.sdkman/bin/sdkman-init.sh"
-
 
 ### UNDER EVALUATION {{{
 ###
@@ -374,5 +370,10 @@ fi
 
 test -f "${zgen_base_path}/sachaos/todoist-master/todoist_functions_fzf.sh" && \
   . "${zgen_base_path}/sachaos/todoist-master/todoist_functions_fzf.sh"
+
+# Don't think that I need this one any more..
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+# export SDKMAN_DIR="/home/nthorne/.sdkman"
+# [[ -s "/home/nthorne/.sdkman/bin/sdkman-init.sh" ]] && source "/home/nthorne/.sdkman/bin/sdkman-init.sh"
 
 ### }}}
