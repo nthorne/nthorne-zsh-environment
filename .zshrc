@@ -295,6 +295,7 @@ unsetopt CASE_GLOB
 unsetopt CASE_MATCH
 setopt GLOB_ASSIGN
 setopt GLOB_STAR_SHORT
+setopt HIST_IGNORE_SPACE
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
