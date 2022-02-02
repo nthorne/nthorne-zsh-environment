@@ -242,6 +242,7 @@ alias _="sudo"
 alias less="less -R"
 alias md="mkdir"
 alias fd="fd -H"
+alias today="todoist l -f today"
 
 #global aliases
 alias -g C='| wc -l'
