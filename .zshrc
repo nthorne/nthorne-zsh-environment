@@ -285,6 +285,8 @@ bindkey '^X;' zaw
 
 bindkey '^Xk' run-help
 
+bindkey "^[[1;5C" forward-word
+
 ### }}}
 ### More plugins {{{
 ###
