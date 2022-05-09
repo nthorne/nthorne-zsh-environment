@@ -344,8 +344,11 @@ function _fasd_z_to_subfolder() {
   cd "${subfolder}"
 }
 
-function hashcwd() {
-  hash -d "${1}="${PWD}""
+function take()
+{
+  test -d "${1}" || mkdir -p "${1}"
+  test -d "${1}" || error "unable to create ${1}"
+  cd "${1}"
 }
 
 ## >>> This snippet is roughly from oh-my-zsh/fasd, in an attempt
