@@ -30,6 +30,7 @@ then
   test -f ~/.zsh/profiles/workvm.zprofile && source ~/.zsh/profiles/workvm.zprofile
 else
   # Attempt the hostname based strategy or bail out..
-  source ~/.zsh/profiles/${CURRENT_HOST}.zprofile ]] || return `error "unknown host"`
+  source ~/.zsh/lib/common.zsh
+  source ~/.zsh/profiles/${CURRENT_HOST}.zprofile || return `error "unknown host: ${CURRENT_HOST}"`
 fi
 
