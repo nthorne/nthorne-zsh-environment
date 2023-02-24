@@ -133,6 +133,10 @@ function precmd()
       export RPROMPT="${RPROMPT/$ENV_TOKEN*]/$ENV_TOKEN$ENV_HEAD]}"
     fi
   fi
+  if [[ ! -z $IN_NIX_SHELL && ! $RPROMPT == *nix-shell* ]] 
+  then
+    export RPROMPT="nix-shell:${RPROMPT}"
+  fi
 }
 # }}}
 
