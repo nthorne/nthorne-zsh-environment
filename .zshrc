@@ -217,6 +217,7 @@ then
     zgen load wfxr/forgit
     zgen load djui/alias-tips
     zgen load zsh-users/zsh-completions
+    zgen load chisui/zsh-nix-shell
     zgen clone sachaos/todoist
     # generate the init script from plugins above
     zgen save
