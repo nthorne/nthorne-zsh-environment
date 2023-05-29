@@ -249,7 +249,8 @@ alias _="sudo"
 alias less="less -R"
 alias md="mkdir"
 alias fd="fd -H"
-alias today="todoist l -f today -f overdue"
+alias today="todoist --color l -f '(today|overdue)'"
+alias worktoday="todoist --color l -f '#work&(today|overdue)'"
 
 #global aliases
 alias -g C='| wc -l'
