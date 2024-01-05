@@ -244,7 +244,6 @@ alias ls='ls -AF --color=auto'
 alias grep='grep --color=auto'
 alias vim="nvim"
 alias view="nvim -R"
-alias auu="apt update && apt upgrade"
 alias _="sudo"
 alias less="less -R"
 alias md="mkdir"
@@ -320,16 +319,12 @@ setopt GLOB_STAR_SHORT
 #  cope with the fact that at work, there is no zsh/regex module :(
 CURRENT_HOST=`hostname`
 CURRENT_HOST=${CURRENT_HOST%%[0-9]*}
-if [[ $CURRENT_HOST == "slaptopen" || $CURRENT_HOST == "dev" || $CURRENT_HOST == "asusen" || $CURRENT_HOST == "nixlaptop" ]]
+if [[ $CURRENT_HOST == "slaptopen" || $CURRENT_HOST == "nixlaptop" ]]
 then
   test -f ~/.zsh/profiles/home.zshrc && source ~/.zsh/profiles/home.zshrc
-elif [[ $CURRENT_HOST == "mintvm" || $CURRENT_HOST == "nixos" ]]
+elif [[ $CURRENT_HOST == "nixos" ]]
 then
   test -f ~/.zsh/profiles/workvm.zshrc && source ~/.zsh/profiles/workvm.zshrc
-elif [[ $CURRENT_HOST =~ "BTIS" ]]
-then
-  # Running under Cygwin - no customizations yet
-  ;
 else
   # Attempt the hostname based strategy or bail out..
   source ~/.zsh/profiles/${CURRENT_HOST}.zshrc || return `error "unknown host"`
@@ -382,10 +377,5 @@ fi
 
 test -f "${zgen_base_path}/sachaos/todoist-master/todoist_functions_fzf.sh" && \
   . "${zgen_base_path}/sachaos/todoist-master/todoist_functions_fzf.sh"
-
-# Don't think that I need this one any more..
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-# export SDKMAN_DIR="/home/nthorne/.sdkman"
-# [[ -s "/home/nthorne/.sdkman/bin/sdkman-init.sh" ]] && source "/home/nthorne/.sdkman/bin/sdkman-init.sh"
 
 ### }}}
