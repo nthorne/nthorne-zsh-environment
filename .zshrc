@@ -352,6 +352,14 @@ function take()
   cd "${1}"
 }
 
+function taked()
+{
+  readonly pth="$(date +%Y-%m-%d)-${1}"
+  test -d "${pth}" || mkdir -p "${pth}"
+  test -d "${pth}" || error "unable to create ${pth}"
+  cd "${pth}"
+}
+
 ## >>> This snippet is roughly from oh-my-zsh/fasd, in an attempt
 ##     to drop the framework entirely.
 export ZSH_CACHE_DIR="${HOME}/.cache/zsh"
